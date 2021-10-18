@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="./style/spectre-exp.min.css">
+    <link rel="stylesheet" href="./style/spectre-icons.min.css">
+    <link rel="stylesheet" href="./style/spectre.min.css">
+    <link rel="stylesheet" href="./style/styles.css">
+    <script src="./app/setting.js"></script>
+
+  </head>
+
+  <body>
+
+    <div id="container">
+
+      <div class="container">
+        <header class="navbar bg-frost">
+
+          <section class="navbar-section">
+            <div class="dropdown">
+              <a href="#" class="btn btn-link dropdown-toggle" tabindex="0">
+                <i class="icon icon-menu"></i>
+              </a>
+              <!-- menu component -->
+              <ul class="menu ">
+                <a href="./pages/about.html" class="btn btn-link">
+                  <i class="icon icon-link"></i> About</a>
+
+                <a href="./pages/settings.html" class="btn btn-link">
+                  <img src="./resources/img/icons/settings.svg" alt="" style="height: .8rem;"> Settings</a>
+
+              </ul>
+            </div>
+          </section>
+
+          <section class="navbar-center">
+            <img src="./resources/img/icons/logo.svg" style="height: 50px; padding: 5px;" alt="eDashboard">
+          </section>
+
+          <section class="navbar-section">
+
+            <!-- basic dropdown button -->
+            <button class="navbar-brand mr-2 btn btn-link" onclick="openContactNav()"><i class="icon  icon-people"></i>
+              Contact</button>
+            <a class="btn btn-link" href="https://mail.standardbankbd.com/owa" target="blank">
+              <i class="icon icon-mail"></i> Webmail </a>
+            <div class="dropdown">
+              <a class="btn btn-link dropdown-toggle" tabindex="0">
+                Quick Links <i class="icon icon-caret"></i>
+              </a>
+              <!-- menu component -->
+              <ul class="menu" id="quicklink">
+              </ul>
+            </div>
+
+            <!-- Notice -->
+            <div class="massageMenu" data-dropdown>
+              <a class="link btn btn-lg btn-link " data-dropdown-button onclick="openMsgNav()">
+                <span class="badge mr-2" id="chatCount" style="pointer-events: none;"><i class="icon icon-message"></i>
+                  Notification</a>
+              </span>
+              <div id="navMsg"
+                class="massageMenu-menu information-grid bg-frost p-2 col-5 float-right container box-shadow">
+                <div class="panel ">
+                  <div class="panel-header">
+                    <div class="hero-sm">
+                      <div class="hero-body">
+                        <h3 class="text-black text-uppercase text-center text-normal text-primary">Massage</h3>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="panel-nav">
+                    <button onclick="closeMsgNav()" class="btn btn-link-error btn-link btn-lg"><i
+                        class="icon icon-cross"></i> Close</button>
+                    <button class="btn btn-link btn-lg" onclick="msgReload()"><i class="icon icon-refresh"></i> Refrash
+                    </button>
+                  </div>
+                  <div class="panel-body">
+                    <!-- contents -->
+                    <id id="notificationWrapper" class="notificationWrapper"></id>
+                    <!-- no msg -->
+                    <div class="p-centered col-11">
+                      <div class="empty bg-none" id="noMsg">
+                        <div class="empty-icon bg-none">
+                          <i class="icon icon-4x icon-message"></i>
+                        </div>
+                        <p class="empty-title h5 bg-none">You have no new notification</p>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+                <div>
+                </div>
+              </div>
+
+
+              <!-- <span class="badge mr-2" id="chatCount">
+              <button class="navbar-brand btn btn-lg btn-link" onclick="openMsgNav()"><i class="icon icon-message"></i>
+                Notification</button>
+            </span> -->
+
+
+
+          </section>
+
+        </header>
+
+        <!-- contact -->
+        <div id="navContact" class="column bg-frost col-5 p-2
+         float-left sidenav box-shadow">
+          <div class="hero-sm">
+            <div class="hero-body">
+              <h1 class="text-black text-uppercase text-center text-normal">Contacts</h1>
+              <button onclick="closeContactNav()" id="con-exit" class="btn btn-link-error btn-link  p-absolute"><i
+                  class="icon icon-cross"></i>
+                Close
+              </button>
+            </div>
+          </div>
+          <div class="p-centered ">
+            <form class="form-horizontal">
+              <div class="input-group input-inline col-12 ">
+                <input class="form-input " type="text" id="searchContact" onkeyup="searchCon()"
+                  placeholder="Search for names..">
+                <button class="btn input-group-btn"><i class="icon icon-search"></i> Search</button>
+              </div>
+            </form>
+            <div>
+              <h1 id="conLoading" style="display: flex; justify-content: center; align-items: center;top:50;left: 50;">
+                <div class="loading loading-lg" style="margin-top: 100px;"></div>
+              </h1>
+              <table class="table table-striped text-tiny table-hover col-12 " id="contacts">
+                <!-- all data come from index.js -->
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- settings -->
+      <div id="settings" class="column bg-frost col-5 p-2
+float-left sidenav box-shadow">
+
+        <div class="hero-sm">
+          <div class="hero-body">
+            <h1 class="text-black text-uppercase text-center text-normal">Settings</h1>
+            <button onclick="closeContactNav()" id="con-exit" class="btn btn-link-error btn-link btn-lg p-absolute">
+              Close
+            </button>
+          </div>
+        </div>
+
+        <div class="p-centered ">
+          <div>
+            <h1 id="conLoading" style="display: flex; justify-content: center; align-items: center;top:50;left: 50;">
+              <!-- <img src="./resources/img/icons/loading.gif"> -->
+              <div class="loading loading-lg" style="margin-top: 100px;"></div>
+            </h1>
+            <table class="table table-striped text-tiny table-hover col-12 " id="contacts">
+              <!-- all data come from index.js -->
+            </table>
+          </div>
+
+        </div>
+
+
+      </div>
+    </div>
+
+
+
+
+
+    <!-- contant body -->
+    <div class="container" style="margin-top:50px;height: max-content;">
+      <!-- body -->
+      <div class="columns">
+        <div class="column col-8">
+
+          <div class="hero bg-gray bg-ball">
+            <div class="hero-body">
+              <h1
+                style="font-family:'Courier New', Courier, monospace; display: flex; justify-content: left; align-items: center;">
+                <img src="./resources/img/icons/logo.svg" style="height: 100px;"> <span
+                  class="text-primary">Dashboard</span>
+              </h1>
+              <!-- <p>Welcome to Standard Bank eDashboard</p> -->
+            </div>
+          </div>
+
+
+
+          <progress class="progress" max="100" id="loading"></progress>
+          <!-- <button class="btn btn-primary"> <i class="icon icon-refresh" onclick="reload()"></i> Refresh </a></button> -->
+          <!-- <div class="loading loading-lg" style="margin-top: 100px;" id="loading">
+          </div> -->
+          <!-- <h1>Application</h1> -->
+          <div class="container">
+            <br>
+            <h6 class="text-primary p-2 box-shadow" id="rowOneTitel"></h6>
+            <div class="btn-group btn-group-block m-1" id="rowOne">
+            </div>
+            <br>
+            <h6 class="text-primary p-2 box-shadow" id="rowTwoTitel"></h6>
+            <div class="btn-group btn-group-block m-1" id="rowTwo">
+            </div>
+            <br>
+            <h6 class="text-primary p-2 box-shadow" id="rowThreeTitel"></h6>
+            <div class="btn-group btn-group-block m-1" id="rowThree">
+            </div>
+            <br>
+            <h6 class="text-primary p-2 box-shadow" id="rowFourTitel"></h6>
+            <div class="btn-group btn-group-block m-1" id="rowFour">
+            </div>
+            <br>
+            <h6 class="text-primary p-2 box-shadow" id="rowFiveTitel"></h6>
+            <div class="btn-group btn-group-block m-1" id="rowFive">
+            </div>
+            <br>
+            <h6 class="text-primary p-2 box-shadow" id="rowSixTitel"></h6>
+            <div class="btn-group btn-group-block m-1" id="rowSix">
+            </div>
+          </div>
+
+
+        </div>
+        <div class="column col-4">
+          <div class="container">
+
+            <!-- <div class="hero-sm">
+              <div class="hero-body">
+                <h1 class="text-center m-2" style="font-family:'Courier New', Courier, monospace;">
+                  Widgets
+                </h1>
+              </div>
+            </div> -->
+
+            <div class="card bg-gray box-shadow my-1">
+              <div class="card-header">
+                <div class="card-title h5 text-primary text-small">Computer Information</div>
+                <div class="card-body">
+                  <table>
+                    <tr>
+                      <td>Date</td>
+                      <td>: </td>
+                      <td><span id="dt">
+                        </span></td>
+                    </tr>
+                    <tr>
+                      <td>Time</td>
+                      <td>: </td>
+                      <td><span id="tm">
+                        </span></td>
+                    </tr>
+                    <tr>
+                      <td>IP </td>
+                      <td>: </td>
+                      <td><span id="ip">
+                        </span></td>
+                    </tr>
+
+                    <tr>
+                      <td>Host</td>
+                      <td>: </td>
+                      <td><span id="host"></span></td>
+                    </tr>
+                    <tr>
+                      <td>Operting System </td>
+                      <td>: </td>
+                      <td><span id="osinfo"></span></td>
+                    </tr>
+                    <tr>
+                      <td>Architucher</td>
+                      <td>: </td>
+                      <td><span id="arch"></span></td>
+                    </tr>
+                    <tr>
+                      <td>User Info</td>
+                      <td>: </td>
+                      <td><span id="user"></span></td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="card box-shadow my-1">
+              <div class="card-header">
+                <div class="card-title h5 text-primary text-small">Age Calculator</div>
+                <div class="card-body">
+                  <div class="form-group">
+                    <label class="form-label" for="input-example-1">From</label>
+                    <input class="form-input" type='date' id='fromdate' />
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="input-example-1">To</label>
+                    <input class="form-input" type='date' id='todate' />
+                  </div>
+                  <span id="result" class="text-primary"></span>
+                  <div class="card-footer">
+                    <button style="width: 100%;" class="btn btn-primary" onclick="findage()" role="button">
+                      <span>Calculate</span>
+                    </button>
+                    
+       
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card my-1 box-shadow">
+              <div class="card-header">
+                <div class="card-title h5 text-primary text-small">EMI Calculator</div>
+                <div class="card-body">
+                  <div class="form-group">
+                    <label class="form-label" for="input-example-1">Amount</label>
+                    <input id="amount" class="form-input" type="number" onchange="Calculate()">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="input-example-1">Profit Rate</label>
+                    <input class="form-input" id="rate" type="number" onchange="Calculate()">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="input-example-1">Tenure</label>
+                    <input class="form-input" id="months" type="number" onchange="Calculate()">
+                  </div>
+                  <div class="card-footer">
+                    <span id="total" class="text-primary text-center"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card bg-dark my-1 box-shadow">
+              <div class="card-header">
+                <div class="card-title h5 text-primary text-small">Chat Room</div>
+                <div class="card-body">
+
+                  <div class="form-group">
+                    <label class="form-label" for="input-example-1">Please Input your ID</label>
+                    <input class="form-input" name="username" id="username" placeholder="ID" required>
+                  </div>
+
+                  <div class="form-control">
+                    <label class="form-label" for="input-example-1">Select Room</label>
+                    <select name="room" class="btn " id="room" style="width: 100%;">
+                      <option value="Agent Banking"> <span>Support</span></option>
+                      <option value="Agent">Cafe</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="card-footer">
+                  <button style="width: 100%;" class="btn btn-primary  disabled" tabindex="-1" type="submit"
+                    role="button">
+                    <span>Join</span>
+                  </button>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="padding:60px;margin-top:60px;width: 100%; bottom:0 " class="p-centered hero-lg bg-gray">
+
+          <div class="hero-body">
+            <img src="./resources/img/icons/Logodarker.svg" alt="Standard Bank Ltd." class="footlogo">
+            <span class="p-2">
+              <br>
+              <p>Head Office
+                Metropolitan Chamber Building (3rd Floor)<br>
+                122-124 Motijheel C/A, Dhaka-1000, Bangladesh<br>
+                Telephone +8802223358385, +8802223385106, +8802223357913<br>
+                Email: <a href="mailto:ho@standardbankbd.com">ho@standardbankbd.com</a>
+                Web: <a href="https://www.standardbankbd.com">www.standardbankbd.com</a></p>
+          </div>
+          </span>
+          <pre> © Standard Bank Ltd. All rights reserved.</pre>
+        </div>
+      </div>
+    </div>
+    </div>
+
+
+    <script defar src="./app/widgets.js"></script>
+    <script defar src="./app/renderer.js"></script>
+    <script src="http://10.140.8.127/edash/src/app/sampledata.js"></script>
+    <script defar src="http://10.140.8.127/edash/src/app/remoteApp.js"></script>
+    <script defar src="http://10.140.8.127/edash/src/app/function.js"></script>
+  </body>
+
+</html>

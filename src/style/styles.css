@@ -1,0 +1,143 @@
+body {
+	height: 100%;
+}
+.navbar {
+	position: fixed;
+	left: 0;
+	right: 0;
+	z-index: 999;
+	top: 0;
+	width: 100%;
+	/* background-color: rgba(255, 255, 255, 0.959); */
+	box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+}
+
+.box-shadow {
+	box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+}
+
+.sidenav {
+	/* left: 0; */
+	right: 0;
+	display: none;
+}
+.notifi {
+	right: 0;
+	display: none;
+}
+.notifi,
+.sidenav {
+	width: 50vw;
+	height: 100%;
+	position: absolute;
+	z-index: 99;
+	overflow-y: scroll;
+	transition: 15ms ease-in-out;
+}
+
+#con-exit {
+	top: 5px;
+	right: 5px;
+}
+#noti-exit {
+	bottom: 0;
+	/* left: 0; */
+}
+
+/* .btn-error {
+	background-color: #ff6347 !important;
+}
+.btn-link-error {
+	color: tomato !important;
+}
+.btn-error:hover {
+	background-color: #fd2600 !important;
+}
+.btn-link-error:hover {
+	color: #fd2600 !important;
+} */
+
+.row {
+	--bs-gutter-x: 1.5rem;
+	--bs-gutter-y: 0;
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	margin-top: calc(var(--bs-gutter-y) * -1);
+	margin-right: calc(var(--bs-gutter-x) * -.5);
+	margin-left: calc(var(--bs-gutter-x) * -.5);
+}
+.table-row {
+	--bs-gutter-x: 1.5rem;
+	--bs-gutter-y: 0;
+	display: flex;
+	justify-content: space-evenly;
+	flex-wrap: wrap;
+	flex-direction: row;
+	margin-top: calc(var(--bs-gutter-y) * -1);
+	margin-right: calc(var(--bs-gutter-x) * -.5);
+	margin-left: calc(var(--bs-gutter-x) * -.5);
+}
+
+.footlogo {
+	height: 40px;
+	display: block;
+}
+/* .box-shadow {
+	box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+} */
+
+.bg-ball {
+	background-image: url('../resources/background/ball-wed.svg') !important;
+}
+.bg-cloud {
+	background-image: url('../resources/background/cloud-dark.svg') !important;
+}
+.bg-corner {
+	background-image: url('../resources/background/corner.svg') !important;
+}
+
+#settings {
+	display: none;
+}
+.panel {
+	border: none;
+}
+
+.link {
+	background: none;
+	border: none;
+	text-decoration: none;
+	color: #777;
+	font-family: inherit;
+	font-size: inherit;
+	cursor: pointer;
+	padding: 0;
+}
+
+.massageMenu {
+	position: relative;
+}
+
+.massageMenu-menu {
+	height: 100vh;
+	width: 40vw;
+	overflow-y: scroll;
+	position: absolute;
+	right: 0;
+	top: calc(100% + .25rem);
+
+	padding: .75rem;
+	border-radius: .25rem;
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .1);
+	opacity: 0;
+	pointer-events: none;
+	transform: translateY(-10px);
+	transition: opacity 150ms ease-in-out, transform 300ms ease-in-out;
+}
+
+.massageMenu.active > .link + .massageMenu-menu {
+	opacity: 1;
+	transform: translateY(0);
+	pointer-events: auto;
+}

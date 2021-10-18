@@ -1,0 +1,36 @@
+{
+	"name": "edashboard",
+	"version": "1.0.3",
+	"description": "A simple dashboard application ",
+	"main": "src/main.js",
+	"scripts": {
+		"start": "electron src/main.js",
+		"pack": "electron-builder --dir",
+		"dist": "electron-builder"
+	},
+	"build": {
+		"appId": "com.witchcraft.edash",
+		"files": [
+			"**/*",
+			"build/icon.png"
+		],
+		"target": "NSIS"
+	},
+	"win": {
+		"publish": [
+			{
+				"provider": "generic",
+				"url": "https://10.140.8.134/edash/dist/download"
+			}
+		]
+	},
+	"author": "Tanbin Hassan Bappi",
+	"license": "Apache-2.0",
+	"devDependencies": {
+		"electron": "^15.1.2",
+		"electron-builder": "^22.13.1"
+	},
+	"dependencies": {
+		"axios": "^0.23.0"
+	}
+}
