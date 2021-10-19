@@ -2556,29 +2556,34 @@ summary.accordion-header::-webkit-details-marker {
 }
 .toast {
 	background: rgba(48, 55, 66, .95);
-	border: .05rem solid #303742;
-	border-color: #303742;
+	box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 	border-radius: .1rem;
 	color: #fff;
 	display: block;
-	padding: .4rem;
+	padding: 1rem;
 	width: 100%;
+	margin-top: .5rem;
+	margin-bottom: .5rem;
 }
 .toast.toast-primary {
-	background: var(--primary-color-hover);
-	border-color: var(--primary-color);
+	background-color: #ffffffcc;
+	color: #212121;
+	backdrop-filter: blur(10px);
 }
 .toast.toast-success {
 	background: rgba(50, 182, 67, .95);
 	border-color: #32b643;
+	backdrop-filter: blur(10px);
 }
 .toast.toast-warning {
 	background: rgba(255, 183, 0, .95);
 	border-color: #ffb700;
+	backdrop-filter: blur(10px);
 }
 .toast.toast-error {
 	background: rgba(232, 86, 0, .95);
 	border-color: #e85600;
+	backdrop-filter: blur(10px);
 }
 .toast a {
 	color: #fff;
