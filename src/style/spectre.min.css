@@ -2,6 +2,8 @@
 :root {
 	--primary-color: #47848f;
 	--primary-color-hover: #212121;
+	--error-color: #fa320f;
+	--error-color-hover: #f05439;
 	--old-color: #5755d9;
 	--old-color-hover: #3634d2;
 	--box-shadow: 0 0 0 .1rem rgba(4, 4, 10, 0.2);
@@ -532,7 +534,7 @@ html:lang(ko) {
 	border-left-color: #fff;
 }
 .btn.btn-error {
-	background: #ff6347;
+	background: var(--error-color);
 	border-color: var(--primary-color);
 	color: #fff;
 }
@@ -541,13 +543,14 @@ html:lang(ko) {
 }
 .btn.btn-error:focus,
 .btn.btn-error:hover {
-	background: #fd2600;
+	background: var(--error-color-hover);
 	border-color: var(--primary-color-hover);
 	color: #fff;
 }
+
 .btn.btn-error.active,
 .btn.btn-error:active {
-	background: #fd2600;
+	background: var(--error-color-hover);
 	border-color: var(--primary-color-hover);
 	color: #fff;
 }
@@ -740,7 +743,7 @@ textarea.form-input.input-sm {
 }
 .has-error .form-input-hint,
 .is-error + .form-input-hint {
-	color: #e85600;
+	color: var(--error-color);
 }
 .form-select {
 	-webkit-appearance: none;
@@ -1040,7 +1043,7 @@ textarea.form-input.input-sm {
 .has-error .form-input,
 .has-error .form-select {
 	background: #fffaf7;
-	border-color: #e85600;
+	border-color: var(--error-color);
 }
 .form-input.is-error:focus,
 .form-select.is-error:focus,
@@ -1054,7 +1057,7 @@ textarea.form-input.input-sm {
 .has-error .form-checkbox .form-icon,
 .has-error .form-radio .form-icon,
 .has-error .form-switch .form-icon {
-	border-color: #e85600;
+	border-color: var(--error-color);
 }
 .form-checkbox.is-error input:checked + .form-icon,
 .form-radio.is-error input:checked + .form-icon,
@@ -1062,8 +1065,8 @@ textarea.form-input.input-sm {
 .has-error .form-checkbox input:checked + .form-icon,
 .has-error .form-radio input:checked + .form-icon,
 .has-error .form-switch input:checked + .form-icon {
-	background: #e85600;
-	border-color: #e85600;
+	background: var(--error-color);
+	border-color: var(--primary-color);
 }
 .form-checkbox.is-error input:focus + .form-icon,
 .form-radio.is-error input:focus + .form-icon,
@@ -1071,19 +1074,19 @@ textarea.form-input.input-sm {
 .has-error .form-checkbox input:focus + .form-icon,
 .has-error .form-radio input:focus + .form-icon,
 .has-error .form-switch input:focus + .form-icon {
-	border-color: #e85600;
+	border-color: var(--error-color-hover);
 	box-shadow: 0 0 0 .1rem rgba(232, 86, 0, .2);
 }
 .form-checkbox.is-error input:indeterminate + .form-icon,
 .has-error .form-checkbox input:indeterminate + .form-icon {
-	background: #e85600;
-	border-color: #e85600;
+	background: var(--error-color);
+	border-color: var(--primary-color);
 }
 .form-input:not(:-ms-input-placeholder):invalid {
-	border-color: #e85600;
+	border-color: var(--primary-color);
 }
 .form-input:not(:placeholder-shown):invalid {
-	border-color: #e85600;
+	border-color: var(--primary-color);
 }
 .form-input:not(:-ms-input-placeholder):invalid:focus {
 	background: #fffaf7;
@@ -1094,10 +1097,10 @@ textarea.form-input.input-sm {
 	box-shadow: 0 0 0 .1rem rgba(232, 86, 0, .2);
 }
 .form-input:not(:-ms-input-placeholder):invalid + .form-input-hint {
-	color: #e85600;
+	color: var(--error-color);
 }
 .form-input:not(:placeholder-shown):invalid + .form-input-hint {
-	color: #e85600;
+	color: var(--error-color);
 }
 .form-input.disabled,
 .form-input:disabled,
@@ -1162,7 +1165,7 @@ input:disabled + .form-icon {
 	color: #fff;
 }
 .label.label-error {
-	background: #e85600;
+	background: var(--error-color);
 	color: #fff;
 }
 code {
@@ -2581,8 +2584,8 @@ summary.accordion-header::-webkit-details-marker {
 	backdrop-filter: blur(10px);
 }
 .toast.toast-error {
-	background: rgba(232, 86, 0, .95);
-	border-color: #e85600;
+	background: var(--error-color);
+	border-color: var(--error-color-hover);
 	backdrop-filter: blur(10px);
 }
 .toast a {
@@ -2751,14 +2754,14 @@ a.text-warning:visited {
 	color: #ffbe1a;
 }
 .text-error {
-	color: #e85600 !important;
+	color: var(--error-color) !important;
 }
 a.text-error:focus,
 a.text-error:hover {
-	color: #cf4d00;
+	color: var(--error-color-hover);
 }
 a.text-error:visited {
-	color: #ff6003;
+	color: var(--error-color-hover);
 }
 .bg-primary {
 	background: var(--primary-color) !important;
@@ -2783,9 +2786,10 @@ a.text-error:visited {
 	color: #fff;
 }
 .bg-error {
-	background: tomato !important;
+	background: var(--error-color) !important;
 	color: #fff;
 }
+
 .bg-frost {
 	background-color: #ffffffcc;
 	backdrop-filter: blur(10px);

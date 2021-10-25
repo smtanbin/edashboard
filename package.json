@@ -1,10 +1,10 @@
 {
 	"name": "edashboard",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"description": "A simple dashboard application ",
 	"main": "src/main.js",
 	"scripts": {
-		"start": "electron src/main.js",
+		"start": "nodemon -e js,html --watch ./pages --watch index.js --exec electron src/main.js",
 		"pack": "electron-builder --dir",
 		"dist": "electron-builder"
 	},
@@ -28,9 +28,12 @@
 	"license": "Apache-2.0",
 	"devDependencies": {
 		"electron": "^15.1.2",
+		"nodemon": "^2.0.14",
 		"electron-builder": "^22.13.1"
 	},
 	"dependencies": {
-		"axios": "^0.23.0"
+		"axios": "^0.23.0",
+		"eiows": "^3.6.1",
+		"socket.io-client": "^4.3.2"
 	}
 }

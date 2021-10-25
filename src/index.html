@@ -11,8 +11,8 @@
     <link rel="stylesheet" href="./style/spectre-icons.min.css">
     <link rel="stylesheet" href="./style/spectre.min.css">
     <link rel="stylesheet" href="./style/styles.css">
-    
- 
+
+
 
   </head>
 
@@ -29,19 +29,37 @@
                 <i class="icon icon-menu"></i>
               </a>
               <!-- menu component -->
-              <ul class="menu ">
-                <a href="./pages/about.html" class="btn btn-link">
-                  <i class="icon icon-link"></i> About</a>
-
-                <a href="./pages/settings.html" class="btn btn-link">
-                  <img src="./resources/img/icons/settings.svg" alt="" style="height: .8rem;"> Settings</a>
-
+              <ul class="menu float-left">
+                <li class="menu-item" ><a href="./pages/about.html" class="btn btn-link">
+                  <i class="icon icon-link"></i> About</a></li>
+                
+                  <li class="menu-item" ><a href="./pages/settings.html" class="btn btn-link">
+                  <i class="icon icon-message"></i> Chat</a></li>
+                  <li class="menu-item" ><a class="btn btn-link" href="http://192.168.201.88/office" target="blank">
+                  <i class="icon icon-location"></i> Branchs</a></li>
+                  <li class="menu-item" > <a class="btn btn-link" href="https://web.whatsapp.com/" target="blank">
+                    <i class="icon icon-location"></i> Whatsapp</a></li>
+                    <li class="menu-item" > <a href="./pages/settings.html" class="btn btn-link">
+                      <img src="./resources/img/icons/settings.svg" alt="" style="height: .8rem;"> Settings</a></li>
               </ul>
+              <div class="dropdown">
+                <a class="btn btn-link dropdown-toggle" tabindex="0">
+                  Quick Links <i class="icon icon-caret"></i>
+                </a>
+                <!-- menu component -->
+                <ul class="menu" id="quicklink">
+                </ul>
+              </div>
+              <a class="btn btn-link" href="https://mail.standardbankbd.com/owa" target="blank">
+                <i class="icon icon-mail"></i> Webmail </a>
+                
+                  
             </div>
+            
           </section>
 
           <section class="navbar-center">
-            <img src="./resources/img/icons/logo.svg" style="height: 50px; padding: 5px;" alt="eDashboard">
+            <img src="./resources/img/icons/logo.svg" style="height: 48px; padding: 5px;" alt="eDashboard">
           </section>
 
           <section class="navbar-section">
@@ -49,16 +67,8 @@
             <!-- basic dropdown button -->
             <button class="navbar-brand mr-2 btn btn-link" onclick="openContactNav()"><i class="icon  icon-people"></i>
               Contact</button>
-            <a class="btn btn-link" href="https://mail.standardbankbd.com/owa" target="blank">
-              <i class="icon icon-mail"></i> Webmail </a>
-            <div class="dropdown">
-              <a class="btn btn-link dropdown-toggle" tabindex="0">
-                Quick Links <i class="icon icon-caret"></i>
-              </a>
-              <!-- menu component -->
-              <ul class="menu" id="quicklink">
-              </ul>
-            </div>
+
+
 
             <!-- Notice -->
             <div class="massageMenu" data-dropdown>
@@ -72,28 +82,49 @@
                   <div class="panel-header">
                     <div class="hero-sm">
                       <div class="hero-body">
-                        <h3 class="text-black text-uppercase text-center text-normal text-primary">Massage</h3>
+
+                        <h3 class="text-black text-uppercase text-center text-normal">
+                          Massage</h3>
                       </div>
                     </div>
+                    <form class="form-horizontal">
+                      <div class="input-group input-inline col-12 ">
+                        <input class="form-input " id="msg" type="text" placeholder="Enter Message" required
+                          autocomplete="off">
+                        <button class="btn input-group-btn btn-primary" type="submit">Submit</button>
+                      </div>
+                    </form>
                   </div>
-                  <div class="panel-nav">
+                  <!-- <div class="panel-nav">
                     <button onclick="closeMsgNav()" class="btn btn-link-error btn-link btn-lg"><i
                         class="icon icon-cross"></i> Close</button>
                     <button class="btn btn-link btn-lg" onclick="msgReload()"><i class="icon icon-refresh"></i> Refrash
                     </button>
-                  </div>
+                  </div> -->
                   <div class="panel-body">
                     <!-- contents -->
                     <id id="notificationWrapper" class="notificationWrapper"></id>
+                    <!-- msg -->
+
+                    <div class="card">
+                      <div class="card-header">
+                        <div class="card-title h5 text-primary">${sender}</div>
+                        <div class="card-subtitle text-gray">${time}</div>
+                      </div>
+                      <div class="card-body">
+                        ${body}
+                      </div>
+                    </div>
+                    <br>
                     <!-- no msg -->
-                    <div class="p-centered col-11">
+                    <!-- <div class="p-centered col-11">
                       <div class="empty bg-none" id="noMsg">
                         <div class="empty-icon bg-none">
                           <i class="icon icon-4x icon-message"></i>
                         </div>
                         <p class="empty-title h5 bg-none">You have no new notification</p>
                       </div>
-                    </div>
+                    </div> -->
                   </div>
 
                 </div>
@@ -119,7 +150,7 @@
           <div class="hero-sm">
             <div class="hero-body">
               <h1 class="text-black text-uppercase text-center text-normal">Contacts</h1>
-              <button onclick="closeContactNav()" id="con-exit" class="btn btn-link-error btn-link  p-absolute"><i
+              <button onclick="closeContactNav()" id="con-exit" class="btn btn-link-error btn-link p-absolute"><i
                   class="icon icon-cross"></i>
                 Close
               </button>
@@ -145,34 +176,9 @@
         </div>
       </div>
 
-      <!-- settings -->
-      <div id="settings" class="column bg-frost col-5 p-2
-float-left sidenav box-shadow">
-
-        <div class="hero-sm">
-          <div class="hero-body">
-            <h1 class="text-black text-uppercase text-center text-normal">Settings</h1>
-            <button onclick="closeContactNav()" id="con-exit" class="btn btn-link-error btn-link btn-lg p-absolute">
-              Close
-            </button>
-          </div>
-        </div>
-
-        <div class="p-centered ">
-          <div>
-            <h1 id="conLoading" style="display: flex; justify-content: center; align-items: center;top:50;left: 50;">
-              <!-- <img src="./resources/img/icons/loading.gif"> -->
-              <div class="loading loading-lg" style="margin-top: 100px;"></div>
-            </h1>
-            <table class="table table-striped text-tiny table-hover col-12 " id="contacts">
-              <!-- all data come from index.js -->
-            </table>
-          </div>
-
-        </div>
 
 
-      </div>
+    </div>
     </div>
 
 
@@ -199,7 +205,7 @@ float-left sidenav box-shadow">
 
 
           <progress class="progress" max="100" id="loading"></progress>
-       
+
           <!-- <button class="btn btn-primary"> <i class="icon icon-refresh" onclick="reload()"></i> Refresh </a></button> -->
           <!-- <div class="loading loading-lg" style="margin-top: 100px;" id="loading">
           </div> -->
@@ -236,15 +242,7 @@ float-left sidenav box-shadow">
         <div class="column col-4">
           <div class="container">
 
-            <!-- <div class="hero-sm">
-              <div class="hero-body">
-                <h1 class="text-center m-2" style="font-family:'Courier New', Courier, monospace;">
-                  Widgets
-                </h1>
-              </div>
-            </div> -->
-
-            <div class="card bg-gray box-shadow my-1">
+            <div class="card bg-gray box-shadow my-1 mx-0 col-12 container" style="overflow:hidden;">
               <div class="card-header">
                 <div class="card-title h5 text-primary text-small">Computer Information</div>
                 <div class="card-body">
@@ -292,56 +290,83 @@ float-left sidenav box-shadow">
                 </div>
               </div>
             </div>
-
-
-            <div class="card box-shadow my-1">
+            <div class="card box-shadow my-1 mx-0 col-12 container" style="overflow:hidden">
               <div class="card-header">
-                <div class="card-title h5 text-primary text-small">Age Calculator</div>
+                <div class="card-title h5 text-primary text-small">Exchange Rate</div>
+
                 <div class="card-body">
-                  <div class="form-group">
-                    <label class="form-label" for="input-example-1">From</label>
-                    <input class="form-input" type='date' id='fromdate' />
-                  </div>
-                  <div class="form-group">
-                    <label class="form-label" for="input-example-1">To</label>
-                    <input class="form-input" type='date' id='todate' />
-                  </div>
-                  <span id="result" class="text-primary"></span>
-                  <div class="card-footer">
-                    <button style="width: 100%;" class="btn btn-primary" onclick="findage()" role="button">
-                      <span>Calculate</span>
-                    </button>
-                    
-       
-                  </div>
+                  <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th>Currency</th>
+                        <th>Buying Price</th>
+                        <th>Selling Price</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="active">
+                        <td>Us Dollar</td>
+                        <td class="">84.7000BDT</td>
+                        <td class="">85.7000 BDT</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="card-footer">
+                  <div>Last Update on: <span id="rateUpdate" class="text-success"></span></div>
+                </div>
+
+
+              </div>
+            </div>
+          
+
+          <div class="card box-shadow my-1 col-12 container" style="overflow:hidden">
+            <div class="card-header">
+              <div class="card-title h5 text-primary text-small">Age Calculator</div>
+              <div class="card-body">
+                <div class="form-group">
+                  <label class="form-label" for="input-example-1">From</label>
+                  <input class="form-input" type='date' id='fromdate' />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="input-example-1">To</label>
+                  <input class="form-input" type='date' id='todate' />
+                </div>
+                <span id="result" class="text-primary"></span>
+                <div class="card-footer">
+                  <button style="width: 100%;" class="btn btn-primary" onclick="findage()" role="button">
+                    <span>Calculate</span>
+                  </button>
                 </div>
               </div>
             </div>
+          </div>
 
-            <div class="card my-1 box-shadow">
-              <div class="card-header">
-                <div class="card-title h5 text-primary text-small">EMI Calculator</div>
-                <div class="card-body">
-                  <div class="form-group">
-                    <label class="form-label" for="input-example-1">Amount</label>
-                    <input id="amount" class="form-input" type="number" onchange="Calculate()">
-                  </div>
-                  <div class="form-group">
-                    <label class="form-label" for="input-example-1">Profit Rate</label>
-                    <input class="form-input" id="rate" type="number" onchange="Calculate()">
-                  </div>
-                  <div class="form-group">
-                    <label class="form-label" for="input-example-1">Tenure</label>
-                    <input class="form-input" id="months" type="number" onchange="Calculate()">
-                  </div>
-                  <div class="card-footer">
-                    <span id="total" class="text-primary text-center"></span>
-                  </div>
+          <div class="card my-1 box-shadow ">
+            <div class="card-header">
+              <div class="card-title h5 text-primary text-small">EMI Calculator</div>
+              <div class="card-body">
+                <div class="form-group">
+                  <label class="form-label" for="input-example-1">Amount</label>
+                  <input id="amount" class="form-input" type="number" onchange="Calculate()">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="input-example-1">Profit Rate</label>
+                  <input class="form-input" id="rate" type="number" onchange="Calculate()">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="input-example-1">Tenure</label>
+                  <input class="form-input" id="months" type="number" onchange="Calculate()">
+                </div>
+                <div class="card-footer">
+                  <span id="total" class="text-primary text-center"></span>
                 </div>
               </div>
             </div>
-
-            <div class="card bg-dark my-1 box-shadow">
+          </div>
+        </div>
+          <!-- <div class="card bg-dark my-1 box-shadow">
               <div class="card-header">
                 <div class="card-title h5 text-primary text-small">Chat Room</div>
                 <div class="card-body">
@@ -368,8 +393,8 @@ float-left sidenav box-shadow">
 
                 </div>
               </div>
-            </div>
-          </div>
+            </div> -->
+
         </div>
         <div style="padding:60px;margin-top:60px;width: 100%; bottom:0 " class="p-centered hero-lg bg-gray">
 
@@ -385,16 +410,18 @@ float-left sidenav box-shadow">
                 Web: <a href="https://www.standardbankbd.com">www.standardbankbd.com</a></p>
           </div>
           </span>
-          <pre> © Standard Bank Ltd. All rights reserved.</pre>
+
+          <pre>©2021 Standard Bank Ltd. All rights reserved.</pre>
         </div>
       </div>
     </div>
     </div>
     <span id="scriptload"></span>
     <script defar src="./app/loader.js"></script>
+    <script defar src="./app/notification.js"></script>
     <script src="./app/widgets.js"></script>
     <script src="./app/renderer.js"></script>
-    
+
   </body>
 
 </html>

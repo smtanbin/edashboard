@@ -20,10 +20,10 @@
 
     <body class="container">
 
-        <header class="navbar bg-frost">
+        <header class="navbar bg-frost" style="height: 50px;">
             <section class="navbar-section">
-                <a href="../index.html" class="navbar-brand mr-2">
-                    <i class="icon icon-arrow-left"></i> Back</a>
+                <a href="../index.html" class="navbar-brand" style="margin-left: 15px;">
+                    <i class="icon icon-arrow-left"></i>Back</a>
             </section>
 
         </header>
@@ -33,15 +33,17 @@
                 <div class="hero hero">
                     <div class="hero-body">
                         <h1 class="text-primary">Settings</h1>
-                        <div id="version" class="text-gray">Version <span id="version"></span></div>
+                        <!-- <div id="version" class="text-gray">Version <span id="version"></span></div> -->
                     </div>
                 </div>
-                <div class="col-4 p-2 m-2">
+                <div class="col-6 p-2 m-2">
                     <div class="btn-group btn-group-block">
                         <button class="btn btn-error disabled" onclick="restartApp()"><i
                                 class="form-icon icon icon-shutdown"></i> Restart</button>
                         <button class="btn disabled"><i class="form-icon icon 
                             icon-delete"></i> Reset</button>
+                            <button class="btn" onclick="refreshall()"><i class="form-icon icon 
+                                icon-refresh"></i> Refresh</button>
                     </div>
                 </div>
                 <h6 class="text-dark my-2 h6">Connection</h6>
@@ -49,23 +51,43 @@
                     <div class="form-group col-6 col-md-12">
 
                         <div class="input-group">
-                            <span class="input-group-addon" onload="getHost()">Server Address</span>
+                            <span class="input-group-addon">Server Address</span>
 
                             <input type="text" class="form-input" id="ipaddress">
-                            <button class="btn btn-primary input-group-btn"  onclick="sethost()"><i
+                            <button class="btn btn-primary input-group-btn"  onclick="setSysHost()"><i
                                     class="form-icon icon icon-check"></i>
-                                Submit</button>
-                            <button class="btn btn-error input-group-btn" onclick="reSetHost()"><i
+                                Save</button>
+                            <button class="btn btn-error input-group-btn" onclick="resetSysHost()"><i
                                     class="form-icon icon icon-refresh"></i>
                                 Default</button>
                         </div>
+                        <p class="bg-gray p-2">Current Host: <span id="sysHost"></span> </p> 
+                    </div>
+
+                    <div class="form-group col-6 col-md-12">
+
+                        <div class="input-group">
+                            <span class="input-group-addon" onload="getMsgHost()">Notification Host</span>
+
+                            <input type="text" class="form-input hostport col-4" id="notificationHost">
+                            <span class="input-group-addon col-1 col-md-1 col-sm-1" onload="getMsgHost()">Port :</span>
+                            <input type="number" class="form-input col-1" id="notificationPort">
+                            <button class="btn btn-primary input-group-btn"  onclick="setNotificationHost()"><i
+                                    class="form-icon icon icon-check"></i>
+                                    Save</button>
+                                 
+                            <button class="btn btn-error input-group-btn" onclick="resetNotificationHost()"><i
+                                    class="form-icon icon icon-refresh"></i>
+                                Default</button>
+                        </div>
+                        <p class="bg-gray p-2">Current Host: <span id="currentNotificationHost"></span> & Port: <span id="currentNotificationPort"></span></p> 
                     </div>
                 </div>
                 <h6 class="text-dark my-2 h6">Theam</h6>
                 <div class="container">
-                    <div class="form-group">
+                    <div class="form-group ">
                         <label class="form-switch">
-                          <input type="checkbox">
+                          <input type="checkbox" disabled>
                           <i class="form-icon"></i> Dark Mode
                         </label>
                       </div>
