@@ -141,3 +141,6 @@ body {
 	transform: translateY(0);
 	pointer-events: auto;
 }
+.msgreplyer > * {
+	display: none;
+}
