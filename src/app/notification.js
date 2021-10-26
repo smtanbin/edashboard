@@ -41,7 +41,9 @@ const printMsg = (payout) => {
 	if (!payout) msgEmptyState()
 	else {
 		document.getElementById(notificationWrapper).innerHTML += `
-        <div class="tile p-2">
+
+    
+      <div class="tile p-2">
         <div class="tile-content">
           <p class="tile-title text-primary">${payout.sender}</p>
           <p class="tile-subtitle">${payout.body}</p>

@@ -34,6 +34,7 @@
 	"dependencies": {
 		"axios": "^0.23.0",
 		"eiows": "^3.6.1",
+		"electron-get-location": "^1.0.1",
 		"socket.io-client": "^4.3.2"
 	}
 }

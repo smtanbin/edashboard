@@ -1,5 +1,6 @@
 const stg = window.localStorage
 let host = localStorage.getItem('host')
+const { ipcRenderer } = require('electron')
 
 const getSysHost = () => {
 	if (!host) {
@@ -68,6 +69,11 @@ const resetNotificationHost = () => {
 	alert(`Server change to default Please restart app`)
 }
 
+ipcRenderer.on('message', function(event, text) {
+	document.getElementById('appVersion').innerHTML = text
+	document.getElementById('nodeVersion').innerHTML = text
+	document.getElementById('electronVersion').innerHTML = text
+})
 getSysHost()
 getNotificationHost()
 

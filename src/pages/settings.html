@@ -11,14 +11,14 @@
         <link rel="stylesheet" href="../style/spectre.min.css">
         <link rel="stylesheet" href="../style/styles.css">
         <script defer src="../app/setting.js"></script>
-      
-            
+
+
 
 
 
     </head>
 
-    <body class="container">
+    <body class="container bg-corner">
 
         <header class="navbar bg-frost" style="height: 50px;">
             <section class="navbar-section">
@@ -28,71 +28,115 @@
 
         </header>
 
-        <div style="margin-top: 50px;">
+        <div style="margin-top: 80px;">
             <div class="container col-12">
-                <div class="hero hero">
+                <div class="hero hero-sm bg-frost">
                     <div class="hero-body">
-                        <h1 class="text-primary">Settings</h1>
-                        <!-- <div id="version" class="text-gray">Version <span id="version"></span></div> -->
+                        <h1 class="text-dark p-2">Settings</h1>
                     </div>
                 </div>
-                <div class="col-6 p-2 m-2">
-                    <div class="btn-group btn-group-block">
-                        <button class="btn btn-error disabled" onclick="restartApp()"><i
-                                class="form-icon icon icon-shutdown"></i> Restart</button>
-                        <button class="btn disabled"><i class="form-icon icon 
-                            icon-delete"></i> Reset</button>
-                            <button class="btn" onclick="refreshall()"><i class="form-icon icon 
-                                icon-refresh"></i> Refresh</button>
-                    </div>
-                </div>
-                <h6 class="text-dark my-2 h6">Connection</h6>
-                <div class="container">
-                    <div class="form-group col-6 col-md-12">
-
-                        <div class="input-group">
-                            <span class="input-group-addon">Server Address</span>
-
-                            <input type="text" class="form-input" id="ipaddress">
-                            <button class="btn btn-primary input-group-btn"  onclick="setSysHost()"><i
-                                    class="form-icon icon icon-check"></i>
-                                Save</button>
-                            <button class="btn btn-error input-group-btn" onclick="resetSysHost()"><i
-                                    class="form-icon icon icon-refresh"></i>
-                                Default</button>
+                <div class="col-8 p-2">
+                    <div class="card box-shadow">
+                        <div class="card-header">
+                            <div class="btn-group btn-group-block">
+                                <button class="btn btn-error disabled" onclick="restartApp()"><i
+                                        class="form-icon icon icon-shutdown"></i> Restart</button>
+                                <button class="btn disabled"><i class="form-icon icon 
+                                    icon-delete"></i> Reset</button>
+                                <button class="btn" onclick="refreshall()"><i class="form-icon icon 
+                                        icon-refresh"></i> Refresh</button>
+                            </div>
                         </div>
-                        <p class="bg-gray p-2">Current Host: <span id="sysHost"></span> </p> 
                     </div>
 
-                    <div class="form-group col-6 col-md-12">
 
-                        <div class="input-group">
-                            <span class="input-group-addon" onload="getMsgHost()">Notification Host</span>
-
-                            <input type="text" class="form-input hostport col-4" id="notificationHost">
-                            <span class="input-group-addon col-1 col-md-1 col-sm-1" onload="getMsgHost()">Port :</span>
-                            <input type="number" class="form-input col-1" id="notificationPort">
-                            <button class="btn btn-primary input-group-btn"  onclick="setNotificationHost()"><i
-                                    class="form-icon icon icon-check"></i>
-                                    Save</button>
-                                 
-                            <button class="btn btn-error input-group-btn" onclick="resetNotificationHost()"><i
-                                    class="form-icon icon icon-refresh"></i>
-                                Default</button>
+                    <div class="card box-shadow my-1 mx-0 container" style="overflow:hidden">
+                        <div class="card-header">
+                            <div class="card-title h5 text-primary">Version Information</div>
+                            <div class="card-body">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Application Version</th>
+                                            <th>NodeJs Version</th>
+                                            <th>Electron Version</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td id="appVersion"></td>
+                                            <td id="nodeVersion"></td>
+                                            <td id="electronVersion"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                        <p class="bg-gray p-2">Current Host: <span id="currentNotificationHost"></span> & Port: <span id="currentNotificationPort"></span></p> 
+                    </div>
+                    <div class="card box-shadow my-1 mx-0 container bg-cloud" style="overflow:hidden">
+                        <div class="card-header">
+                            <div class="card-title h5 text-primary">Connection</div>
+                            <div class="card-body">
+                                <div class="form-group">
+
+                                    <div class="input-group">
+                                        <span class="input-group-addon">Server Address<span
+                                                class="text-error">*</span></span>
+
+                                        <input type="text" class="form-input" id="ipaddress">
+                                        <button class="btn btn-primary input-group-btn" onclick="setSysHost()"><i
+                                                class="form-icon icon icon-check"></i>
+                                            Save</button>
+                                        <button class="btn btn-error input-group-btn" onclick="resetSysHost()"><i
+                                                class="form-icon icon icon-refresh"></i>
+                                            Default</button>
+                                    </div>
+                                    <p class="p-2 bg-frost">Current Host: <span id="sysHost"></span> </p>
+                                    <div class="form-group">
+
+                                        <div class="input-group">
+                                            <span class="input-group-addon" onload="getMsgHost()">Notification Host<span
+                                                    class="text-error"> *</span></span>
+
+                                            <input type="text" class="form-input hostport" id="notificationHost">
+                                            <span class="input-group-addon " onload="getMsgHost()">Port<span
+                                                    class="text-error">*</span></span>
+                                            <input type="number" class="form-input" id="notificationPort">
+                                            <button class="btn btn-primary input-group-btn"
+                                                onclick="setNotificationHost()"><i
+                                                    class="form-icon icon icon-check"></i>
+                                                Save</button>
+
+                                            <button class="btn btn-error input-group-btn"
+                                                onclick="resetNotificationHost()"><i
+                                                    class="form-icon icon icon-refresh"></i>
+                                                Default</button>
+                                        </div>
+                                        <p class="bg-frost p-2">Current Host: <span id="currentNotificationHost"></span>
+                                            & Port:<span id="currentNotificationPort"></span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card box-shadow my-1 mx-0 container">
+                        <div class="card-header">
+                            <div class="card-title h5 text-primary">Theam</div>
+
+                        </div>
+                        <div class="card-body">
+                            <div class="container">
+                                <div class="form-group ">
+                                    <label class="form-switch">
+                                        <input type="checkbox" disabled>
+                                        <i class="form-icon"></i> Dark Mode
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <h6 class="text-dark my-2 h6">Theam</h6>
-                <div class="container">
-                    <div class="form-group ">
-                        <label class="form-switch">
-                          <input type="checkbox" disabled>
-                          <i class="form-icon"></i> Dark Mode
-                        </label>
-                      </div>
-                </div>
- 
                 <div style="padding:60px;margin-top:60px;width: 100%; bottom:0 " class="p-centered hero-lg bg-gray">
 
                     <div class="hero-body">

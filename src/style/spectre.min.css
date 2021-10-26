@@ -7,6 +7,13 @@
 	--old-color: #5755d9;
 	--old-color-hover: #3634d2;
 	--box-shadow: 0 0 0 .1rem rgba(4, 4, 10, 0.2);
+	--frost: #ffffffcc;
+	--frost-dark: #d1d0d0cc;
+	--default-bg-blur: blur(10px);
+
+	--frost-primary: #47848fd3;
+	--frost-error: #fa320fc7;
+	--frost-success: #00ff40de;
 }
 
 html {
@@ -403,7 +410,7 @@ html:lang(ko) {
 	width: 100%;
 }
 .table.table-striped tbody tr:nth-of-type(odd) {
-	background: #f7f8f9;
+	background: #f7f8f9f1;
 }
 .table tbody tr.active,
 .table.table-striped tbody tr.active {
@@ -432,7 +439,9 @@ html:lang(ko) {
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	appearance: none;
-	background: #fff;
+	/* background: #fff; */
+	background-color: var(--frost);
+	backdrop-filter: var(--default-bg-blur);
 	border: .05rem solid var(--primary-color);
 	border-radius: .1rem;
 	color: var(--primary-color);
@@ -489,7 +498,9 @@ html:lang(ko) {
 	border-radius: 25px;
 }
 .btn.btn-primary {
-	background: var(--primary-color);
+	/* background: var(--primary-color); */
+	background-color: var(--frost-primary);
+	backdrop-filter: var(--default-bg-blur);
 	border-color: var(--primary-color);
 	color: #fff;
 }
@@ -559,6 +570,7 @@ html:lang(ko) {
 	border-left-color: #fff;
 }
 .btn.btn-link {
+	background-color: #ffffff00;
 	background: 0 0;
 	border-color: transparent;
 	color: var(--primary-color);
@@ -568,6 +580,7 @@ html:lang(ko) {
 .btn.btn-link:focus,
 .btn.btn-link:hover {
 	color: var(--primary-color-hover);
+	background: none;
 }
 .btn.btn-sm {
 	font-size: .7rem;
@@ -652,6 +665,7 @@ html:lang(ko) {
 	-ms-flex: 1 0 0;
 	flex: 1 0 0;
 }
+
 .form-group:not(:last-child) {
 	margin-bottom: .4rem;
 }
@@ -1720,6 +1734,7 @@ video.video-responsive::before {
 	justify-content: space-between;
 	padding-bottom: 4rem;
 	padding-top: 4rem;
+	overflow: hidden;
 }
 .hero.hero-sm {
 	padding-bottom: 2rem;
@@ -2001,13 +2016,15 @@ summary.accordion-header::-webkit-details-marker {
 	box-shadow: 0 0 0 .1rem var(--primary-color);
 }
 .card {
-	background: #fff;
+	background-color: var(--frost);
+	backdrop-filter: var(--default-bg-blur);
 	border: .05rem solid #dadee4;
 	border-radius: .1rem;
 	display: -ms-flexbox;
 	display: flex;
 	-ms-flex-direction: column;
 	flex-direction: column;
+	overflow: hidden;
 }
 .card .card-body,
 .card .card-footer,
@@ -2791,8 +2808,13 @@ a.text-error:visited {
 }
 
 .bg-frost {
-	background-color: #ffffffcc;
-	backdrop-filter: blur(10px);
+	background-color: var(--frost);
+	backdrop-filter: var(--default-bg-blur);
+}
+.bg-frost-dark {
+	background-color: var(--frost-dark);
+	backdrop-filter: var(--default-bg-blur);
+	color: #000;
 }
 .bg-black {
 	background-color: black !important;
