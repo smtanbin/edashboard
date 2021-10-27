@@ -262,141 +262,137 @@
             </div>
           </div>
           <div class="column col-4" id="widgets">
-            <div class="container">
-              <div class="card bg-frost box-shadow my-1 mx-0 col-12 container">
-                <div class="card-header">
-                  <div class="card-title h5 text-primary text-small">Computer Information</div>
-                  <div class="card-body">
-                    <table>
-                      <tr>
-                        <td>Date</td>
-                        <td>: </td>
-                        <td><span id="dt">
-                          </span></td>
-                      </tr>
-                      <tr>
-                        <td>Time</td>
-                        <td>: </td>
-                        <td><span id="tm">
-                          </span></td>
-                      </tr>
-                      <tr>
-                        <td>IP </td>
-                        <td>: </td>
-                        <td><span id="ip">
-                          </span></td>
-                      </tr>
-                      <tr>
-                        <td>Host</td>
-                        <td>: </td>
-                        <td><span id="host"></span></td>
-                      </tr>
-                      <tr>
-                        <td>Operting System </td>
-                        <td>: </td>
-                        <td><span id="osinfo"></span></td>
-                      </tr>
-                      <tr>
-                        <td>Architucher</td>
-                        <td>: </td>
-                        <td><span id="arch"></span></td>
-                      </tr>
-                      <tr>
-                        <td>User Info</td>
-                        <td>: </td>
-                        <td><span id="user"></span></td>
-                      </tr>
-                    </table>
-                  </div>
-                </div>
+            <!-- time -->
+            <!-- <div class="container"> -->
+            <div class="card box-shadow my-1 mx-0 col-12 container">
+              <div class="card-header  text-left">
+                <h1 id="tm" class="text-primary"></h1>
+                <span id="dt" class="text-dark"></span>
               </div>
-              <!-- weather widgets -->
-              <div class="card box-shadow my-1 mx-0 col-12 container">
-                <div class="card-header">
-                  <div class="card-title h5 text-primary text-small">Weather</div>
-                  <div id="weather"></div>
-                </div>
+              <div class="card-body">
+                <div id="weather"></div>
               </div>
-              <!-- rate widgets -->
+            </div>
 
-              <div class="card box-shadow my-1 mx-0 col-12 container">
-                <div class="card-header">
-                  <div class="card-title h5 text-primary text-small">Exchange Rate</div>
-                  <div class="card-body">
-                    <table class="table table-striped">
-                      <thead>
-                        <tr>
-                          <th>Currency</th>
-                          <th>Buying Price</th>
-                          <th>Selling Price</th>
-                        </tr>
-                      </thead>
-                      <tbody id="rate">
-                        <!-- <tr class="active">
+
+            <div class="card bg-frost box-shadow my-1 mx-0 col-12 container">
+              <div class="card-header">
+                <div class="card-title h5 text-primary text-small">Computer Information</div>
+              </div>
+              <div class="card-body">
+                <table>
+                  <tr>
+                    <td>IP </td>
+                    <td>: </td>
+                    <td><span id="ip">
+                      </span></td>
+                  </tr>
+                  <tr>
+                    <td>Host</td>
+                    <td>: </td>
+                    <td><span id="host"></span></td>
+                  </tr>
+                  <tr>
+                    <td>Operting System </td>
+                    <td>: </td>
+                    <td><span id="osinfo"></span></td>
+                  </tr>
+                  <tr>
+                    <td>Architucher</td>
+                    <td>: </td>
+                    <td><span id="arch"></span></td>
+                  </tr>
+                  <tr>
+                    <td>User Info</td>
+                    <td>: </td>
+                    <td><span id="user"></span></td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+
+            <!-- weather widgets -->
+            <!-- <div class="card box-shadow my-1 mx-0 col-12 container">
+              <div class="card-header">
+                <div class="card-title h5 text-primary text-small">Weather</div>
+              
+              </div>
+            </div> -->
+            <!-- rate widgets -->
+            <div class="card box-shadow my-1 mx-0 col-12 container">
+              <div class="card-header">
+                <div class="card-title h5 text-primary text-small">Exchange Rate</div>
+                <div class="card-body">
+                  <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th>Currency</th>
+                        <th>Buying Price</th>
+                        <th>Selling Price</th>
+                      </tr>
+                    </thead>
+                    <tbody id="rate">
+                      <!-- <tr class="active">
                           <td>Us Dollar</td>
                           <td class="">84.7000BDT</td>
                           <td class="">85.7000 BDT</td>
                         </tr> -->
-                      </tbody>
-                    </table>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="card-footer">
+                  <div>Last Update on: <span id="rateUpdate" class="text-success"></span></div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="card box-shadow my-1 col-12 container">
+              <div class="card-header">
+                <div class="card-title h5 text-primary text-small">Age Calculator</div>
+                <div class="card-body">
+                  <div class="form-group">
+                    <label class="form-label" for="input-example-1">From</label>
+                    <input class="form-input" type='date' id='fromdate' />
                   </div>
+                  <div class="form-group">
+                    <label class="form-label" for="input-example-1">To</label>
+                    <input class="form-input" type='date' id='todate' />
+                  </div>
+                  <span id="result" class="text-primary"></span>
                   <div class="card-footer">
-                    <div>Last Update on: <span id="rateUpdate" class="text-success"></span></div>
-                  </div>
-                </div>
-              </div>
-
-
-
-
-
-
-              <div class="card box-shadow my-1 col-12 container">
-                <div class="card-header">
-                  <div class="card-title h5 text-primary text-small">Age Calculator</div>
-                  <div class="card-body">
-                    <div class="form-group">
-                      <label class="form-label" for="input-example-1">From</label>
-                      <input class="form-input" type='date' id='fromdate' />
-                    </div>
-                    <div class="form-group">
-                      <label class="form-label" for="input-example-1">To</label>
-                      <input class="form-input" type='date' id='todate' />
-                    </div>
-                    <span id="result" class="text-primary"></span>
-                    <div class="card-footer">
-                      <button style="width: 100%;" class="btn btn-primary" onclick="findage()" role="button">
-                        <span>Calculate</span>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="card my-1 box-shadow ">
-                <div class="card-header">
-                  <div class="card-title h5 text-primary text-small">EMI Calculator</div>
-                  <div class="card-body">
-                    <div class="form-group">
-                      <label class="form-label" for="input-example-1">Amount</label>
-                      <input id="amount" class="form-input" type="number" onchange="Calculate()">
-                    </div>
-                    <div class="form-group">
-                      <label class="form-label" for="input-example-1">Profit Rate</label>
-                      <input class="form-input" id="rate" type="number" onchange="Calculate()">
-                    </div>
-                    <div class="form-group">
-                      <label class="form-label" for="input-example-1">Tenure</label>
-                      <input class="form-input" id="months" type="number" onchange="Calculate()">
-                    </div>
-                    <div class="card-footer">
-                      <span id="total" class="text-primary text-center"></span>
-                    </div>
+                    <button style="width: 100%;" class="btn btn-primary" onclick="findage()" role="button">
+                      <span>Calculate</span>
+                    </button>
                   </div>
                 </div>
               </div>
             </div>
-            <!-- <div class="card bg-dark my-1 box-shadow">
+
+            <div class="card my-1 box-shadow ">
+              <div class="card-header">
+                <div class="card-title h5 text-primary text-small">EMI Calculator</div>
+                <div class="card-body">
+                  <div class="form-group">
+                    <label class="form-label" for="input-example-1">Amount</label>
+                    <input id="amount" class="form-input" type="number" onchange="Calculate()">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="input-example-1">Profit Rate</label>
+                    <input class="form-input" id="rate" type="number" onchange="Calculate()">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="input-example-1">Tenure</label>
+                    <input class="form-input" id="months" type="number" onchange="Calculate()">
+                  </div>
+                  <div class="card-footer">
+                    <span id="total" class="text-primary text-center"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="card bg-dark my-1 box-shadow">
               <div class="card-header">
                 <div class="card-title h5 text-primary text-small">Chat Room</div>
                 <div class="card-body">
@@ -425,45 +421,49 @@
               </div>
             </div> -->
 
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- footer -->
+    <footer style="padding:60px;margin-top:60px;width: 100%; bottom:0 " class="p-centered hero-lg bg-frost">
+
+      <div class="hero-body">
+
+        <div class="columns col-12">
+          <div class="columns col-6">
+            <div class="text-center">
+              <img src="./resources/img/icons/Logodarker.svg" alt="Standard Bank Ltd." class="footlogo">
+            </div>
+          </div>
+          <div class="divider-vert"></div>
+          <div class="columns">
+
+            <span class="p-2">
+              <br>
+              <p>Head Office
+                Metropolitan Chamber Building (3rd Floor)<br>
+                122-124 Motijheel C/A, Dhaka-1000, Bangladesh<br>
+                Telephone +8802223358385, +8802223385106, +8802223357913<br>
+                Email: <a href="mailto:ho@standardbankbd.com">ho@standardbankbd.com</a>
+                Web: <a href="https://www.standardbankbd.com">www.standardbankbd.com</a></p>
+            </span>
+          </div>
+
+
+          <div class="col-12 text-center" style="margin-top: 50px;">
+            <div class="text-gray">2021 © Standard Bank Ltd. All rights reserved.</div>
           </div>
         </div>
       </div>
-      <div style="padding:60px;margin-top:60px;width: 100%; bottom:0 " class="p-centered hero-lg bg-frost">
-
-        <div class="hero-body">
-
-          <div class="columns col-12">
-            <div class="columns col-6">
-              <div class="text-center">
-                <img src="./resources/img/icons/Logodarker.svg" alt="Standard Bank Ltd." class="footlogo">
-              </div>
-            </div>
-            <div class="divider-vert"></div>
-            <div class="columns">
-
-              <span class="p-2">
-                <br>
-                <p>Head Office
-                  Metropolitan Chamber Building (3rd Floor)<br>
-                  122-124 Motijheel C/A, Dhaka-1000, Bangladesh<br>
-                  Telephone +8802223358385, +8802223385106, +8802223357913<br>
-                  Email: <a href="mailto:ho@standardbankbd.com">ho@standardbankbd.com</a>
-                  Web: <a href="https://www.standardbankbd.com">www.standardbankbd.com</a></p>
-              </span>
-            </div>
-
-
-            <div class="col-12 text-center" style="margin-top: 50px;">
-              <div class="text-gray">2021 © Standard Bank Ltd. All rights reserved.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <span id="scriptload"></span>
-      <script defar src="./app/loader.js"></script>
-      <script defar src="./app/notification.js"></script>
-      <script src="./app/widgets.js"></script>
-      <script src="./app/renderer.js"></script>
+    </footer>
+    <span id="scriptload"></span>
+    <script defar src="./app/loader.js"></script>
+    <script defar src="./app/notification.js"></script>
+    <script src="./app/widgets.js"></script>
+    <script src="./app/renderer.js"></script>
     </div>
   </body>
 
