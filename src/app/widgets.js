@@ -162,18 +162,18 @@ document.addEventListener("click", (e) => {
 const apiKey = "ba700996c9b5d5f5e8e44cf64fcc8992"
 
 // const weatherAPI = (apiKey,lat,lon) => {
+
 const weatherAPI = async (apiKey) => {
   //ajax here
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=Dhaka&appid=${apiKey}&units=metric`
+  const geo = geoip.lookup(await publicIp.v4())
+
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${geo.city}&appid=${apiKey}&units=metric`
   // const url = `api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`
 
   fetch(url)
     .then((response) => response.json())
     .then((data) => {
-      // const icon = `https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/${weather[0].icon}.svg`
-      // const icon =`http://openweathermap.org/img/wn/${weather[0].icon}@2x.png`
-      console.log(data)
-      // const { main, name, sys, weather } = data
+      // console.log(data)
       document.getElementById("weather").innerHTML = `<br>
 			<div class="card-subtitle">
 				<h3>${data.name}</h3>
@@ -228,13 +228,6 @@ const weatherAPI = async (apiKey) => {
 </div> */
 }
 
-const ip = async () => {
-  await publicIp.v4().then((ip) => {
-    return ip
-  })
-}
-
-console.log(ip())
 // const getip = async () => {
 // 	geoip.lookup(await publicIp.v4()).then((data) => data.value);
 
@@ -248,8 +241,6 @@ console.log(ip())
 // const ip = publicip()
 // console.log(ip);
 // const geo = geoip.lookup(ip);
-const geo = geoip.lookup(ip())
-console.log(geo)
 
 async function getWeather(apiKey) {
   // console.log(showPosition())

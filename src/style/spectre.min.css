@@ -7,10 +7,11 @@
 	--old-color: #5755d9;
 	--old-color-hover: #3634d2;
 	--box-shadow: 0 0 0 .1rem rgba(4, 4, 10, 0.2);
-	--frost: #ffffffcc;
+	/* --frost: #ffffffcc;
 	--frost-dark: #d1d0d0cc;
+	--default-bg-blur: blur(10px); */
+	--frost: rgba(255, 255, 255, 0.7);
 	--default-bg-blur: blur(10px);
-
 	--frost-primary: #47848fd3;
 	--frost-error: #fa320fc7;
 	--frost-success: #00ff40de;
@@ -441,7 +442,7 @@ html:lang(ko) {
 	appearance: none;
 	/* background: #fff; */
 	background-color: var(--frost);
-	backdrop-filter: var(--default-bg-blur);
+	/* backdrop-filter: var(--default-bg-blur); */
 	border: .05rem solid var(--primary-color);
 	border-radius: .1rem;
 	color: var(--primary-color);

@@ -117,7 +117,10 @@ body {
 .bg-rain {
 	background-image: url('../resources/background/Raindrop.svg') !important;
 }
-
+.bg-wallpaper {
+	background-image: url('../resources/background/abstract-envelope.svg') !important;
+	background-repeat: no-repeat;
+}
 .bg-gradient {
 	background: linear-gradient(-45deg, #62f7fc93, #fda6a6, #b3e5f7, #94e9d4);
 	background-size: 400% 400%;
