@@ -1,5 +1,10 @@
+const publicIp = require('public-ip');
+const geoip = require('geoip-lite');
+const os = require('os')
+
+
+
 getip = () => {
-	const os = require('os')
 	const interfaces = os.networkInterfaces()
 	const addresses = []
 	for (const k in interfaces) {
@@ -114,100 +119,98 @@ document.addEventListener('click', (e) => {
 	})
 })
 
-/*SEARCH BY USING A CITY NAME (e.g. athens) OR A COMMA-SEPARATED CITY NAME ALONG WITH THE COUNTRY CODE (e.g. athens,gr)*/
-const form = document.querySelector('.top-banner form')
-const input = document.querySelector('.top-banner input')
-const msg = document.querySelector('.top-banner .msg')
-const list = document.querySelector('.ajax-section .cities')
+
 /*SUBSCRIBE HERE FOR API KEY: https://home.openweathermap.org/users/sign_up*/
-const apiKey = '4d8fb5b93d4af21d66a2948710284366'
-// const apiKey = 'ba700996c9b5d5f5e8e44cf64fcc8992'
-form.addEventListener('submit', (e) => {
-	e.preventDefault()
-	let inputVal = input.value
+// const apiKey = '4d8fb5b93d4af21d66a2948710284366'
+const apiKey = 'ba700996c9b5d5f5e8e44cf64fcc8992'
 
-	//check if there's already a city
-	const listItems = list.querySelectorAll('.ajax-section .city')
-	const listItemsArray = Array.from(listItems)
 
-	if (listItemsArray.length > 0) {
-		const filteredArray = listItemsArray.filter((el) => {
-			let content = ''
-			//athens,gr
-			if (inputVal.includes(',')) {
-				//athens,grrrrrr->invalid country code, so we keep only the first part of inputVal
-				if (inputVal.split(',')[1].length > 2) {
-					inputVal = inputVal.split(',')[0]
-					content = el.querySelector('.city-name span').textContent.toLowerCase()
-				} else {
-					content = el.querySelector('.city-name').dataset.name.toLowerCase()
-				}
-			} else {
-				//athens
-				content = el.querySelector('.city-name span').textContent.toLowerCase()
-			}
-			return content == inputVal.toLowerCase()
-		})
-
-		if (filteredArray.length > 0) {
-			msg.textContent = `You already know the weather for ${filteredArray[0].querySelector('.city-name span')
-				.textContent} ...otherwise be more specific by providing the country code as well 😉`
-			form.reset()
-			input.focus()
-			return
-		}
-	}
-
+// const weatherAPI = (apiKey,lat,lon) => {
+const weatherAPI = async (apiKey) => {
 	//ajax here
-	const url = `https://api.openweathermap.org/data/2.5/weather?q=${inputVal}&appid=${apiKey}&units=metric`
+	const url = `https://api.openweathermap.org/data/2.5/weather?q=Dhaka&appid=${apiKey}&units=metric`
+	// const url = `api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`
 
-	fetch(url)
-		.then((response) => response.json())
-		.then((data) => {
-			const { main, name, sys, weather } = data
-			const icon = `https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/${weather[0]['icon']}.svg`
+	fetch(url).then((response) => response.json()).then((data) => {
+		// const icon = `https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/${weather[0].icon}.svg`
+		// const icon =`http://openweathermap.org/img/wn/${weather[0].icon}@2x.png`
+		console.log(data)
+		// const { main, name, sys, weather } = data
+		document.getElementById('weather').innerHTML =
+			`<br>
+			<div class="card-subtitle">
+				<span>${data.name}</span>
+				<sup>${data.sys.country}</sup>
+			</div>
 
-			const div = document.createElement('div')
-			div.classList.add('city')
-			const markup =
-				// 		`<h5 class="city-name" data-name="${name},${sys.country}">
-				//       <span>${name}</span><sup>${sys.country}</sup>
+			<div class="card-body" >
+				<div class="columns col-12">
+					<div class="column">
+						<h3>${Math.round(data.main.temp)}
+							<sup>°C</sup>
+							<br>
+							<h5 class="text-gray text-uppercase">${data.weather[0].main}</h5>
+						</h3>
+						
+						<span class="text-small float-left">Feels like ${Math.round(data.main.feels_like)}<sup>°C</sup></span>
+					
+					<br>
+						<span class="text-error text-small float-left">Max ${data.main.temp_max}<sup>°C</sup></span>
+						<br><span class="text-success text-small float-left">Min ${data.main.temp_min}<sup>°C</sup></span>
+						</div>
+					<div class="column">
+					<img src="./resources/img/weather/${data.weather[0].icon}.svg" alt="Icon" class="img-responsive">
+					
+					<span class="text-small float-left">Humidity ${data.main.humidity}%</span>
+					<span class="text-small float-left">Pressure ${data.main.pressure}hPa</span>
+					<span class="text-small float-left">Wing Speed ${data.wind.speed} m/s</span>	
+					<span class="text-small float-left">Visibility ${data.main.visibility} m/s</span>				
+						
+					</div>
+				</div>
+				</div>
+				<div class="card-footer">
 
-				//     </h5><span class="city-temp">${Math.round(main.temp)}<sup>°C</sup></span><figcaption>${weather[0][
-				// 			'description'
-				// 		]}</figcaption>
-				// 	<figure>
-				// 	<img class="city-icon col-4" src="${icon}" alt="${weather[0]['description']}"
-				//   </figure>
-				//   `
-				`<div class="card-subtitle text-gray">
-				<span>${name}</span><sup>${sys.country}</sup></div>
-				
-				<span class="city-temp">${Math.round(main.temp)}<sup>°C</sup></span>
-				<figcaption>${weather[0]['description']}</figcaption>
-				 <div class="card-image">
-				 <img src="${icon}" alt="${weather[0]['description']}" class="img-responsive">
-				 </div>`
-
-			li.innerHTML = markup
-			list.appendChild(li)
-		})
-		.catch(() => {
-			msg.textContent = 'Please search for a valid city 😩'
-		})
-
-	msg.textContent = ''
-	form.reset()
-	input.focus()
-})
-
-// location
-const getLocation = require('electron-get-location')
-;async () => {
-	console.log(await getLocation())
-	//=> 2.3455,34,33122
+					</div>
+			</div>`
+	})
 }
 
+{
+	/* <div class="card-image">
+<img src="${data.icon}" alt="${data.weather[0]['description']}" class="img-responsive">
+</div> */
+}
+
+const ip = async () => { await publicIp.v4().then(ip => { return ip }); }
+
+console.log(ip());
+// const getip = async () => {
+// 	geoip.lookup(await publicIp.v4()).then((data) => data.value);
+
+// }
+
+
+
+// const publicip = async () => {
+// 	console.log(await publicIp.v4());
+// 	let x = (await publicIp.v4())
+// 	return x
+// }
+// const ip = publicip()
+// console.log(ip);
+// const geo = geoip.lookup(ip);
+const geo = geoip.lookup(ip());
+console.log(geo);
+
+async function getWeather(apiKey) {
+	// console.log(showPosition())
+	// console.log(getCurrentPosition())
+	// await weatherAPI(apiKey,lat,lon)
+	await weatherAPI(apiKey)
+}
+
+getWeather(apiKey)
 setInterval(time, 1000)
 getDate()
 getuser()

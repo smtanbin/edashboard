@@ -18,8 +18,7 @@
   </head>
 
   <body>
-    <div id="container" class="container bg-cloud">
-
+    <div id="container" class="container">
       <div class="container">
         <header class="navbar container bg-frost">
 
@@ -61,10 +60,7 @@
                 <li class="menu-item">
                   <a href="./pages/about.html">About</a>
                   <div class="menu-badge">
-                    <!-- <label class="form-checkbox">
-                      <input type="checkbox" disabled>
-                      <i class="form-switch"></i>Dark
-                    </label> -->
+
                   </div>
                 </li>
               </ul>
@@ -314,6 +310,14 @@
                   </div>
                 </div>
               </div>
+              <!-- weather widgets -->
+              <div class="card box-shadow my-1 mx-0 col-12 container">
+                <div class="card-header">
+                  <div class="card-title h5 text-primary text-small">Weather</div>
+                  <div id="weather"></div>
+                </div>
+              </div>
+              <!-- rate widgets -->
 
               <div class="card box-shadow my-1 mx-0 col-12 container">
                 <div class="card-header">
@@ -327,12 +331,12 @@
                           <th>Selling Price</th>
                         </tr>
                       </thead>
-                      <tbody>
-                        <tr class="active">
+                      <tbody id="rate">
+                        <!-- <tr class="active">
                           <td>Us Dollar</td>
                           <td class="">84.7000BDT</td>
                           <td class="">85.7000 BDT</td>
-                        </tr>
+                        </tr> -->
                       </tbody>
                     </table>
                   </div>
@@ -341,39 +345,6 @@
                   </div>
                 </div>
               </div>
-
-              <div class="card box-shadow my-1 mx-0 col-12 container">
-
-                <div class="card-header">
-                  <div class="card-title h5 text-primary text-small">Weather</div>
-                  <!-- <div class="card-subtitle text-gray">...</div> -->
-                </div>
-
-                <div class="card-body">
-
-                  <div class="container">
-                  </div>
-                  <section class="top-banner">
-                    <div class="container">
-                      <section class="ajax-section">
-                        <div class="container">
-                          <ul class="cities"></ul>
-                        </div>
-                      </section>
-                      <div class="card-footer">
-                        <div class="form-group">
-                          <form class="input-group">
-                            <input type="text" class="form-input" placeholder="Search for a city" autofocus>
-                            <button class="btn input-group-btn" type="submit">SUBMIT</button>
-                            <span class="msg"></span>
-                          </form>
-                        </div>
-                      </div>
-                  </section>
-                </div>
-              </div>
-
-
 
 
 
