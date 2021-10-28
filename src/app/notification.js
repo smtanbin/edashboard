@@ -6,13 +6,9 @@
  *
  ***************************************************/
 
-/*
-Variable Declaration
-*/
-
 const { io, Socket } = require("socket.io-client")
 
-const socket = io("10.140.8.126:3000")
+const socket = io("127.0.0.1:3000")
 const user = () => {
   const os = require("os")
   return os.userInfo().username
@@ -50,11 +46,9 @@ const printMsg = (payout) => {
   if (!payout) msgEmptyState()
   else {
     document.getElementById(notificationWrapper).innerHTML += `
-
-    
       <div class="tile p-2">
         <div class="tile-content">
-          <p class="tile-title text-primary">${payout.sender}</p>
+          <p class="tile-title text-primary">${payout.from}</p>
           <p class="tile-subtitle">${payout.body}</p>
           <small class="tile-subtitle text-success">${payout.time}</small>
         </div>
@@ -64,5 +58,8 @@ const printMsg = (payout) => {
       </div>`
   }
 }
+const payload = require("./dummyMsg.json")
+printMsg(payload)
+
 
 socket.on("connect", () => {})

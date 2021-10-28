@@ -93,10 +93,12 @@
 
             <!-- Notice -->
             <div class="massageMenu" data-dropdown>
-              <a class="link btn btn-lg btn-link disabled" data-dropdown-button onclick="openMsgNav()">
+              <a class="link btn btn-lg btn-link" data-dropdown-button>
+                <!-- <a class="link btn btn-lg btn-link" data-dropdown-button onclick="openMsgNav()"> -->
                 <span class="badge mr-2" id="chatCount" style="pointer-events: none;">
                   <i class="icon icon-message"></i>
-                  Chat</a>
+                  Chat
+              </a>
               </span>
               <div id="navMsg"
                 class="massageMenu-menu information-grid bg-frost p-2 col-5 float-right container box-shadow">
@@ -121,13 +123,10 @@
                     <div id="notificationWrapper" style="width: 100%;">
                       <div class="input-group" id="msgEntryBox">
 
-                        <input type="text" class="form-input" placeholder="Please input your Branch/Division"
-                          id="branch">
-                        <button class="btn btn-primary input-group-btn">Login</button>
+                        <!-- <input type="text" class="form-input" placeholder="Please input your Branch/Division"
+                          id="branch"> -->
+                        <!-- <button class="btn btn-primary input-group-btn">Login</button> -->
                       </div>
-
-
-
                     </div>
                     <!-- msg -->
                     <!-- <div class="card">
@@ -139,8 +138,6 @@
                         ${body}
                       </div>
                     </div> -->
-
-
                     <!-- no msg -->
                     <!-- <div class="p-centered col-11">
                       <div class="empty bg-none" id="noMsg">
@@ -170,13 +167,10 @@
                 </div>
               </div>
 
-
               <!-- <span class="badge mr-2" id="chatCount">
               <button class="navbar-brand btn btn-lg btn-link" onclick="openMsgNav()"><i class="icon icon-message"></i>
                 Notification</button>
             </span> -->
-
-
 
           </section>
 
@@ -242,8 +236,24 @@
 
               </div>
             </div>
-            <!-- contanc body -->
+            <!-- contant body -->
             <div class="container" id="mainBody">
+
+
+
+              <div id="notification" class="hidden">
+                <p id="message"></p>
+                <button id="close-button" class="btn" onClick="closeNotification()">
+                  Close
+                </button>
+                <button id="restart-button" onClick="restartApp()" class="hidden btn">
+                  Restart
+                </button>
+              </div>
+
+
+
+
 
               <!-- loading icon -->
               <progress class="progress" max="100" id="loading"></progress>
@@ -274,9 +284,7 @@
               <h6 class="text-primary p-2 " id="rowSixTitel"></h6>
               <div class="btn-group btn-group-block m-1" id="rowSix">
               </div>
-
             </div>
-
           </div>
 
 
@@ -442,7 +450,7 @@
 
 
     <!-- footer -->
-    <footer style="padding:60px;margin-top:60px;width: 100%; bottom:0 " class="p-centered hero-lg bg-frost">
+    <footer style="padding:60px;margin-top:10px;width: 100%; bottom:0 " class="p-centered hero-lg bg-frost">
 
       <div class="hero-body">
 
