@@ -1,10 +1,10 @@
 {
 	"name": "edashboard",
-	"version": "1.0.5",
-	"description": "A simple dashboard application ",
+	"version": "1.0.6",
+	"description": "A simple dashboard application",
 	"main": "src/main.js",
 	"scripts": {
-		"start": "nodemon -e js,html --watch ./pages --watch index.js --exec electron src/main.js",
+		"start": "nodemon -e js,html --watch /src --watch index.js --exec electron src/main.js",
 		"pack": "electron-builder --dir",
 		"dist": "electron-builder"
 	},
@@ -34,7 +34,6 @@
 	},
 	"dependencies": {
 		"axios": "^0.23.0",
-		"eiows": "^3.6.1",
 		"electron-get-location": "^1.0.1",
 		"geoip-lite": "^1.4.2",
 		"public-ip": "^4.0.4",

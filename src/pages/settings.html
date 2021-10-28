@@ -6,45 +6,52 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Setting</title>
-        <link rel="stylesheet" href="../style/spectre-exp.min.css">
-        <link rel="stylesheet" href="../style/spectre-icons.min.css">
-        <link rel="stylesheet" href="../style/spectre.min.css">
+        <link rel="stylesheet" href="../style/edashboard-min-exp.css">
+        <link rel="stylesheet" href="../style/edashboard-min-icons.css">
+        <link rel="stylesheet" href="../style/edashboard-min.css">
         <link rel="stylesheet" href="../style/styles.css">
         <script defer src="../app/setting.js"></script>
-
-
-
-
-
+        <!-- ****************************************************
+    * Module: Setting.html
+    * Type: HTML5
+    * Author: Tanbin Hassan Bappi
+    * Date: Oct 2021
+    * Description: This is the starting point.
+    ***************************************************** -->
     </head>
 
     <body class="container bg-corner">
-
         <header class="navbar bg-frost" style="height: 50px;">
             <section class="navbar-section">
                 <a href="../index.html" class="navbar-brand" style="margin-left: 15px;">
                     <i class="icon icon-arrow-left"></i>Back</a>
             </section>
-
         </header>
 
         <div style="margin-top: 80px;">
+
+
             <div class="container col-12">
+
+
                 <div class="hero hero-sm bg-frost">
                     <div class="hero-body">
                         <h1 class="text-dark p-2">Settings</h1>
                     </div>
                 </div>
-                <div class="col-8 p-2">
+
+
+
+                <div class="col-12 p-2">
+
+
                     <div class="card box-shadow">
                         <div class="card-header">
-                            <div class="btn-group btn-group-block">
-                                <button class="btn btn-error disabled" onclick="restartApp()"><i
+                            <div class="btn-group btn-group-block col-6">
+                                <button style="height: 50px;" class="btn disabled" onclick="restartApp()"><i
                                         class="form-icon icon icon-shutdown"></i> Restart</button>
-                                <button class="btn disabled"><i class="form-icon icon 
+                                <button style="height: 50px;" onclick="factoryReset()" class="btn bg-error"><i class="form-icon icon 
                                     icon-delete"></i> Reset</button>
-                                <button class="btn" onclick="refreshall()"><i class="form-icon icon 
-                                        icon-refresh"></i> Refresh</button>
                             </div>
                         </div>
                     </div>
@@ -73,7 +80,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card box-shadow my-1 mx-0 container bg-cloud" style="overflow:hidden">
+
+
+                    <div class="card box-shadow my-1 mx-0 container" style="overflow:hidden">
                         <div class="card-header">
                             <div class="card-title h5 text-primary">Connection</div>
                             <div class="card-body">
@@ -120,6 +129,57 @@
                         </div>
                     </div>
 
+
+                    <div class="card box-shadow my-1 mx-0 container" style="overflow:hidden">
+                        <div class="card-header">
+                            <div class="card-title h5 text-primary">Widgets Setting</div>
+                            <div class="card-body">
+                                <div class="form-group">
+
+                                    <div class="input-group">
+                                        <span class="input-group-addon">Weather Key</span>
+
+                                        <input type="text" class="form-input" id="weatherKey">
+                                        <button class="btn btn-primary input-group-btn" onclick="setWeatherKey()"><i
+                                                class="form-icon icon icon-check"></i>
+                                            Save</button>
+                                        <button class="btn btn-error input-group-btn" onclick="resetWeatherKey()"><i
+                                                class="form-icon icon icon-refresh"></i>
+                                            Default</button>
+
+                                    </div>
+                                    <span class="input-group-addon text-capitalize">Subscribe API key at
+                                        <a href="https://home.openweathermap.org/users/sign_up*/">openweathermap.org</a>
+                                    </span>
+
+                                    <!-- <div class="form-group">
+
+                                        <div class="input-group">
+                                            <span class="input-group-addon" onload="getMsgHost()">Notification Host<span
+                                                    class="text-error"> *</span></span>
+
+                                            <input type="text" class="form-input hostport" id="notificationHost">
+                                            <span class="input-group-addon " onload="getMsgHost()">Port<span
+                                                    class="text-error">*</span></span>
+                                            <input type="number" class="form-input" id="notificationPort">
+                                            <button class="btn btn-primary input-group-btn"
+                                                onclick="setNotificationHost()"><i
+                                                    class="form-icon icon icon-check"></i>
+                                                Save</button>
+
+                                            <button class="btn btn-error input-group-btn"
+                                                onclick="resetNotificationHost()"><i
+                                                    class="form-icon icon icon-refresh"></i>
+                                                Default</button>
+                                        </div>
+                                        <p class="bg-frost p-2">Current Host: <span id="currentNotificationHost"></span>
+                                            & Port:<span id="currentNotificationPort"></span></p>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="card box-shadow my-1 mx-0 container">
                         <div class="card-header">
                             <div class="card-title h5 text-primary">Theam</div>
@@ -136,7 +196,11 @@
                             </div>
                         </div>
                     </div>
+
+
+
                 </div>
+
                 <div style="padding:60px;margin-top:60px;width: 100%; bottom:0 " class="p-centered hero-lg bg-gray">
 
                     <div class="hero-body">
@@ -155,8 +219,5 @@
                 </div>
 
             </div>
-
-
-
 
     </body>

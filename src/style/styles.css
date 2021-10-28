@@ -1,3 +1,13 @@
+/****************************************************
+ * Module: style.css
+ * Type: CSS
+ * Author: Tanbin Hassan Bappi
+ * Date: Oct 2021
+ ***************************************************/
+
+
+
+
 body {
 	height: 100%;
 }
@@ -35,12 +45,15 @@ body {
 	transition: 15ms ease-in-out;
 }
 #widgets {
+	max-height: 1000px;
 	height: fit-content;
 	overflow-y: scroll;
 }
 
 #mainBody {
+	max-height: 1000px;
 	height: fit-content;
+	overflow-y: scroll;
 }
 /* Hide scrollbar for Chrome, Safari and Opera */
 *::-webkit-scrollbar {
@@ -121,12 +134,16 @@ body {
 	background-image: url('../resources/background/abstract-envelope.svg') !important;
 	background-repeat: no-repeat;
 }
-.bg-gradient {
-	background: linear-gradient(-45deg, #62f7fc93, #fda6a6, #b3e5f7, #94e9d4);
-	background-size: 400% 400%;
-	animation: gradient 150s ease infinite;
-	height: 100%;
-	width: 100%;
+.bg-sun-blue{
+	backdrop-filter:10px;
+	background-image: url('../resources/background/sun/sunlight-blue.svg') !important;
+
+}
+.bg-sun-red{
+	backdrop-filter:10px;
+
+	background-image: url('../resources/background/sun/sunlight-red.svg') !important;
+
 }
 
 @keyframes gradient {
@@ -188,63 +205,3 @@ body {
 .msgreplyer > * {
 	display: none;
 }
-
-/* SECTION #2
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
-/* .ajax-section {
-	margin: 70px 0 20px;
-} */
-/* 
-.ajax-section .cities {
-	display: grid;
-	grid-gap: 32px 20px;
-	grid-template-columns: repeat(4, 1fr);
-}
-
-.ajax-section .city {
-	position: relative;
-	padding: 20px 10%;
-	border-radius: 20px;
-}
-
-.ajax-section .city::after {
-	content: '';
-	width: 90%;
-	height: 50px;
-	position: absolute;
-	bottom: -12px;
-	left: 5%;
-	z-index: -1;
-	opacity: 0.3;
-	border-radius: 20px;
-}
-
-.ajax-section figcaption {
-	margin-top: 10px;
-	text-transform: uppercase;
-	letter-spacing: 0.05em;
-}
-
-.ajax-section .city-temp {
-	font-size: 5rem;
-	font-weight: bold;
-	margin-top: 10px;
-	color: var(--text_dark);
-}
-
-.ajax-section .city sup {
-	font-size: 0.5em;
-}
-
-.ajax-section .city-name sup {
-	padding: 0.2em 0.6em;
-	border-radius: 30px;
-	color: var(--text_light);
-	background: var(--orange);
-}
-
-.ajax-section .city-icon {
-	/* margin-top: 10px; */
-/* width: 50px;
-	height: 50px; 
-} */

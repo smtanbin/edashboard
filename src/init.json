@@ -1,5 +1,0 @@
-{
-	"host": "http://10.140.8.127/edash",
-	"notificationHost": "http://10.140.8.127/edash",
-	"notificationPort": "3000"
-}

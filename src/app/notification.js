@@ -1,12 +1,21 @@
-// let notificationHost = localStorage.getItem('notificationHost')
-// let notificationPort = localStorage.getItem('notificationPort')
+/****************************************************
+ * Module: Widget.js
+ * Type: Vanila JavaScript
+ * Author: Tanbin Hassan Bappi
+ * Date: Oct 2021
+ *
+ ***************************************************/
 
-const { io, Socket } = require('socket.io-client')
+/*
+Variable Declaration
+*/
 
-const socket = io('10.140.8.126:3000')
+const { io, Socket } = require("socket.io-client")
+
+const socket = io("10.140.8.126:3000")
 const user = () => {
-	const os = require('os')
-	return os.userInfo().username
+  const os = require("os")
+  return os.userInfo().username
 }
 
 // const msgEmptyState = () => {
@@ -22,7 +31,7 @@ const user = () => {
 // }
 
 const msgEmptyState = () => {
-	document.getElementById(notificationWrapper).replaceWith = `
+  document.getElementById(notificationWrapper).replaceWith = `
     div class="p-centered col-11">
                       <div class="empty bg-none" id="noMsg">
                         <div class="empty-icon bg-none">
@@ -34,13 +43,13 @@ const msgEmptyState = () => {
 }
 
 const msgReply = () => {
-	document.getElementById(msgreplyer).style.display = ''
+  document.getElementById(msgreplyer).style.display = ""
 }
 
 const printMsg = (payout) => {
-	if (!payout) msgEmptyState()
-	else {
-		document.getElementById(notificationWrapper).innerHTML += `
+  if (!payout) msgEmptyState()
+  else {
+    document.getElementById(notificationWrapper).innerHTML += `
 
     
       <div class="tile p-2">
@@ -53,7 +62,7 @@ const printMsg = (payout) => {
           <small class="tile-subtitle">${payout.division}</small>
         </div>
       </div>`
-	}
+  }
 }
 
-socket.on('connect', () => {})
+socket.on("connect", () => {})

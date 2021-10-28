@@ -1,31 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- (c) ammap.com | SVG weather icons -->
-<svg
-    version="1.1"
-    xmlns="http://www.w3.org/2000/svg"
-    xmlns:xlink="http://www.w3.org/1999/xlink"
-    width="64"
-    height="64"
-    viewbox="0 0 64 64">
-    <defs>
-        <filter id="blur" width="200%" height="200%">
-            <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
-            <feOffset dx="0" dy="4" result="offsetblur"/>
-            <feComponentTransfer>
-                <feFuncA type="linear" slope="0.05"/>
-            </feComponentTransfer>
-            <feMerge> 
-                <feMergeNode/>
-                <feMergeNode in="SourceGraphic"/> 
-            </feMerge>
-        </filter>
-    </defs>
-    <g filter="url(#blur)" id="rainy-7">
-  
-        <g transform="translate(21,26), rotate(10)">
-            <line class="am-weather-rain-1" fill="none" stroke="#91C0F8" stroke-dasharray="0.1,7" stroke-linecap="round" stroke-width="3" transform="translate(-5,1)" x1="0" x2="0" y1="0" y2="8" />
-            <line class="am-weather-rain-2" fill="none" stroke="#91C0F8" stroke-dasharray="0.1,7" stroke-linecap="round" stroke-width="3" transform="translate(0,-1)" x1="0" x2="0" y1="0" y2="8" />
-            <line class="am-weather-rain-1" fill="none" stroke="#91C0F8" stroke-dasharray="0.1,7" stroke-linecap="round" stroke-width="3" transform="translate(5,0)" x1="0" x2="0" y1="0" y2="8" />
-        </g>
-    </g>
+<!-- Generator: Adobe Illustrator 23.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 64 64" style="enable-background:new 0 0 64 64;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#ECF4F7;}
+	.st1{fill:#51565F;}
+</style>
+<path class="st0" d="M25.6,10.4c-6.1,0-12.2,1.5-12.2,6.1s-8.1,7.1-8.1,12.2s9.7,9.7,9.7,12.2s-4.6,1.5-4.6,6.1s7.1,6.1,10.2,6.1
+	s19.3,0,23.4,0S51,50.5,51,47S47,43.4,47,40.9s13.7-5.1,13.7-12.2c0-8.1-9.2-18.3-16.8-18.3S31.7,10.4,25.6,10.4z"/>
+<path class="st1" d="M46,53.6H19.5c-0.3,0-0.5-0.2-0.5-0.5s0.2-0.5,0.5-0.5H46c0.3,0,0.5,0.2,0.5,0.5C46.5,53.4,46.3,53.6,46,53.6z
+	 M52.1,47.5H31.7c-0.3,0-0.5-0.2-0.5-0.5s0.2-0.5,0.5-0.5h20.3c0.3,0,0.5,0.2,0.5,0.5C52.6,47.3,52.4,47.5,52.1,47.5z M27.6,47.5
+	H9.3c-0.3,0-0.5-0.2-0.5-0.5s0.2-0.5,0.5-0.5h18.3c0.3,0,0.5,0.2,0.5,0.5C28.2,47.3,28,47.5,27.6,47.5z M48,41.4H25.6
+	c-0.3,0-0.5-0.2-0.5-0.5s0.2-0.5,0.5-0.5H48c0.3,0,0.5,0.2,0.5,0.5S48.3,41.4,48,41.4z M21.5,41.4h-8.1c-0.3,0-0.5-0.2-0.5-0.5
+	s0.2-0.5,0.5-0.5h8.1c0.3,0,0.5,0.2,0.5,0.5C22.1,41.2,21.9,41.4,21.5,41.4z M58.2,35.3H35.8c-0.3,0-0.5-0.2-0.5-0.5
+	s0.2-0.5,0.5-0.5h22.4c0.3,0,0.5,0.2,0.5,0.5S58.5,35.3,58.2,35.3z M31.7,35.3H9.3c-0.3,0-0.5-0.2-0.5-0.5s0.2-0.5,0.5-0.5h22.4
+	c0.3,0,0.5,0.2,0.5,0.5S32,35.3,31.7,35.3z M62.2,29.2H19.5c-0.3,0-0.5-0.2-0.5-0.5s0.2-0.5,0.5-0.5h42.7c0.3,0,0.5,0.2,0.5,0.5
+	S62.5,29.2,62.2,29.2z M15.4,29.2H3.2c-0.3,0-0.5-0.2-0.5-0.5s0.2-0.5,0.5-0.5h12.2c0.3,0,0.5,0.2,0.5,0.5S15.8,29.2,15.4,29.2z
+	 M52.1,23.1h-8.1c-0.3,0-0.5-0.2-0.5-0.5s0.2-0.5,0.5-0.5h8.1c0.3,0,0.5,0.2,0.5,0.5C52.6,22.9,52.4,23.1,52.1,23.1z M39.9,23.1H7.3
+	c-0.3,0-0.5-0.2-0.5-0.5s0.2-0.5,0.5-0.5h32.5c0.3,0,0.5,0.2,0.5,0.5C40.4,22.9,40.2,23.1,39.9,23.1z M54.1,17H31.7
+	c-0.3,0-0.5-0.2-0.5-0.5s0.2-0.5,0.5-0.5h22.4c0.3,0,0.5,0.2,0.5,0.5C54.6,16.8,54.4,17,54.1,17z M27.6,17H13.4
+	c-0.3,0-0.5-0.2-0.5-0.5s0.2-0.5,0.5-0.5h14.2c0.3,0,0.5,0.2,0.5,0.5C28.2,16.8,28,17,27.6,17z M50,10.9H23.6
+	c-0.3,0-0.5-0.2-0.5-0.5s0.2-0.5,0.5-0.5H50c0.3,0,0.5,0.2,0.5,0.5S50.3,10.9,50,10.9z"/>
 </svg>

@@ -1,87 +1,161 @@
+/****************************************************
+ * Module: Setting.js
+ * Type: Vanila JavaScript
+ * Author: Tanbin Hassan Bappi
+ * Date: Oct 2021
+ *
+ ***************************************************/
+
+/*
+Variable Declaration
+*/
+
 const stg = window.localStorage
-let host = localStorage.getItem('host')
-const { ipcRenderer } = require('electron')
+let host = localStorage.getItem("host")
+const { ipcRenderer } = require("electron")
 
-const getSysHost = () => {
-	if (!host) {
-		const setting = require('../init.json')
-		stg.setItem('host', setting.host)
-		document.getElementById('sysHost').innerHTML = `${host}`
-	} else {
-		document.getElementById('sysHost').innerHTML = `${host}`
-	}
+/****************************************************/
+//                  Variables
+/*************************************************** */
+
+// default value
+const dSysHost = "http://10.140.8.127/edash"
+const dNotificationHost = "http://10.140.8.127/edash"
+const dNotificationPort = "3000"
+const dWeatherapi = "ba700996c9b5d5f5e8e44cf64fcc8992"
+
+// use by notification
+let notificationHost = localStorage.getItem("notificationHost")
+let notificationPort = localStorage.getItem("notificationPort")
+
+/*****************************************************/
+//                 Reset Optations			   		//
+/***************************************************/
+
+// factory reset will reset everything
+const factoryReset = () => {
+  stg.setItem("sysHost", dSysHost)
+  stg.setItem("notificationHost", dNotificationHost)
+  stg.setItem("notificationPort", dNotificationPort)
+  stg.setItem("weatherapi", dWeatherapi)
+  alert(`Reset Sucessful`)
 }
 
-const setSysHost = () => {
-	hostvalue = document.getElementById('ipaddress').value
-	if (!hostvalue) alert('Please input host url')
-	else {
-		stg.setItem('host', hostvalue)
-
-		alert(`Server change to ${hostvalue} Please restart app`)
-	}
-}
-
+// only reset host
 const resetSysHost = () => {
-	const setting = require('../init.json')
-	stg.setItem('msgipaddress', setting.msgip)
-	stg.setItem('notificationPort', setting.notificationPort)
-	alert(`Server change to default Please restart app`)
+  stg.setItem("sysHost", dSysHost)
+  alert(`Server change to default Please restart app`)
+}
+// reset weather
+const resetWeatherKey = () => {
+  stg.setItem("weatherapi", dWeatherapi)
+  alert(`Key change to ${dWeatherapi} Please restart app`)
 }
 
-let notificationHost = localStorage.getItem('notificationHost')
-let notificationPort = localStorage.getItem('notificationPort')
-
-const getNotificationHost = () => {
-	if (!notificationHost) {
-		const setting = require('../init.json')
-		stg.setItem('msgipaddress', setting.msgip)
-		if (!notificationPort) {
-			stg.setItem('notificationPort', setting.notificationPort)
-			document.getElementById('currentNotificationHost').innerHTML = `${notificationHost}`
-			document.getElementById('currentNotificationPort').innerHTML = `${notificationPort}`
-		} else {
-			document.getElementById('currentNotificationHost').innerHTML = `${notificationHost}`
-			document.getElementById('currentNotificationPort').innerHTML = `${notificationPort}`
-		}
-	} else {
-		document.getElementById('currentNotificationHost').innerHTML = `${notificationHost}`
-		document.getElementById('currentNotificationPort').innerHTML = `${notificationPort}`
-	}
-}
-
-const setNotificationHost = () => {
-	notificationHost = document.getElementById('notificationHost').value
-	notificationPort = document.getElementById('notificationPort').value
-	if (!notificationHost) alert('Please input with valid IP')
-	else if (!notificationPort) alert('Please input with valid Port')
-	else {
-		stg.setItem('notificationHost', notificationHost)
-		stg.setItem('notificationPort', notificationPort)
-
-		alert(`Server change to ${notificationHost}:${notificationPort} Please restart app`)
-	}
-}
+// only reset notification host & port
 const resetNotificationHost = () => {
-	const setting = require('../init.json')
-	stg.setItem('notificationHost', setting.notificationHost)
-	stg.setItem('notificationPort', setting.notificationPort)
-	alert(`Server change to default Please restart app`)
+  stg.setItem("notificationHost", dNotificationHost)
+  stg.setItem("notificationPort", dNotificationPort)
+  alert(`Server change to default Please restart app`)
 }
 
-ipcRenderer.on('message', function(event, text) {
-	document.getElementById('appVersion').innerHTML = text
-	document.getElementById('nodeVersion').innerHTML = text
-	document.getElementById('electronVersion').innerHTML = text
+/*****************************************************/
+//                 Get Value  				   		//
+/***************************************************/
+
+// get host
+getSysHost = () => {
+  if (host === null) {
+    stg.setItem("sysHost", dSysHost)
+    document.getElementById("sysHost").innerHTML = `${host}`
+  } else {
+    document.getElementById("sysHost").innerHTML = `${host}`
+  }
+}
+
+// notification
+getNotificationHost = () => {
+  if (notificationHost === null) {
+    stg.setItem("notificationHost", dNotificationHost)
+    if (notificationPort === null || notificationPort === 0) {
+      stg.setItem("notificationPort", dNotificationPort)
+      document.getElementById(
+        "currentNotificationHost"
+      ).innerHTML = `${notificationHost}`
+      document.getElementById(
+        "currentNotificationPort"
+      ).innerHTML = `${notificationPort}`
+    } else {
+      document.getElementById(
+        "currentNotificationHost"
+      ).innerHTML = `${notificationHost}`
+      document.getElementById(
+        "currentNotificationPort"
+      ).innerHTML = `${notificationPort}`
+    }
+  } else {
+    document.getElementById(
+      "currentNotificationHost"
+    ).innerHTML = `${notificationHost}`
+    document.getElementById(
+      "currentNotificationPort"
+    ).innerHTML = `${notificationPort}`
+  }
+}
+
+// get value feom main.js
+ipcRenderer.on("message", function (event, text) {
+  document.getElementById("appVersion").innerHTML = text
+  document.getElementById("nodeVersion").innerHTML = text
+  document.getElementById("electronVersion").innerHTML = text
 })
+
+/*****************************************************/
+//                 Set Value  				   		//
+/***************************************************/
+
+// set host
+const setSysHost = () => {
+  hostvalue = document.getElementById("ipaddress").value
+  if (!hostvalue) alert("Please input host url")
+  else {
+    stg.setItem("sysHost", hostvalue)
+
+    alert(`Server change to ${hostvalue} Please restart app`)
+  }
+}
+
+// set notification
+const setNotificationHost = () => {
+  notificationHost = document.getElementById("notificationHost").value
+  notificationPort = document.getElementById("notificationPort").value
+  if (!notificationHost) alert("Please input with valid IP")
+  else if (!notificationPort) alert("Please input with valid Port")
+  else {
+    stg.setItem("notificationHost", dNotificationHost)
+    stg.setItem("notificationPort", dNotificationPort)
+
+    alert(
+      `Server change to ${notificationHost}:${notificationPort} Please restart app`
+    )
+  }
+}
+
+// set weather
+const setWeatherKey = () => {
+  hostvalue = document.getElementById("weatherKey").value
+  if (!weatherKey) alert("Please input host url")
+  else {
+    stg.setItem("weatherapi", weatherKey)
+    alert(`Server change to ${weatherKey} Please restart app`)
+  }
+}
+
+/*****************************************************/
+//                 Calling Functions 				   		//
+/***************************************************/
+
 getSysHost()
 getNotificationHost()
 
-refreshall = () => {
-	getHost()
-	getnotificationHost()
-}
-resetall = () => {
-	reSetnotificationHost()
-	reSetHost()
-}
+//Standard Bank Ltd.

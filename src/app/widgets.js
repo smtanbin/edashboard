@@ -1,7 +1,186 @@
+/****************************************************
+ * Module: Widget.js
+ * Type: Vanila JavaScript
+ * Author: Tanbin Hassan Bappi
+ * Date: Oct 2021
+ * Description:
+ ***************************************************/
+
+/*
+Variable Declaration
+*/
 const publicIp = require("public-ip")
 const geoip = require("geoip-lite")
 const os = require("os")
 
+/*
+Widgets Time part
+*/
+
+//this function responsible for Date
+getDate = () => {
+  let date_ob = new Date()
+  const days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ]
+  let date = date_ob.getDate()
+  let month = date_ob.toLocaleString("default", { month: "long" })
+  let year = date_ob.getFullYear()
+  const output = days[date_ob.getDay()] + " " + month + " " + date + ", " + year
+  return (document.getElementById("dt").innerHTML = output)
+}
+
+// this function responsible for live clock
+time = () => {
+  const d = new Date()
+  const s = d.getSeconds()
+  const m = d.getMinutes()
+  const fh = d.getHours()
+  const h = (d.getHours() + 24) % 12 || 12
+  let period = "AM"
+
+  if (fh > 12) {
+    period = "PM"
+  }
+  output =
+    ("0" + h).substr(-2) +
+    ":" +
+    ("0" + m).substr(-2) +
+    ":" +
+    ("0" + s).substr(-2)
+
+  return (document.getElementById(
+    "tm"
+  ).innerHTML = `<time class="text-large">${output}<sup>${period}</sup></time>`)
+}
+
+/**********************************************************************
+Widgets Weather
+**********************************************************************/
+
+/*SUBSCRIBE HERE FOR API KEY: https://home.openweathermap.org/users/sign_up*/
+/* Original Key 
+const apiKey = '4d8fb5b93d4af21d66a2948710284366'
+*/
+let apiKey = window.localStorage.getItem("weatherapi")
+// const weatherAPI = (apiKey,lat,lon) => {
+const weatherAPI = async (apiKey) => {
+  const geo = geoip.lookup(await publicIp.v4())
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${geo.city}&appid=${apiKey}&units=metric`
+  // const url = `api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`
+
+  fetch(url)
+    .then((response) => response.json())
+    .then((data) => {
+      document.getElementById("weather").innerHTML =
+        // carasol version
+        //       `<div class="columns">
+        // <div class="column">
+        // <h3>${data.name}</h3>
+        // <div class="column">
+        //   <h3>${Math.round(data.main.temp)}
+        //     <sup>°C</sup>
+        //     <br>
+        //     <h5 class="text-gray text-uppercase">${data.weather[0].main}</h5>
+        //   </h3>
+        //   <span class="text-small float-left">Feels like ${Math.round(
+        //     data.main.feels_like
+        //   )}<sup>°C</sup></span>
+        //   <br>
+        //   <div class="divider"></div><span class="text-error text-small float-left">Max ${
+        //     data.main.temp_max
+        //   }<sup>°C</sup></span>
+        //   <br><span class="text-success text-small float-left">Min ${
+        //     data.main.temp_min
+        //   }<sup>°C</sup></span>
+        //   </div>
+        // </div>
+        // <div class="column">
+        // <img style="height: 100px;" src="./resources/img/weather/${
+        //         data.weather[0].icon
+        //       }.svg" alt="Icon" class="img-responsive">
+        //       <div class="column">
+        //       <span class="text-small float-left">Humidity :${
+        //         data.main.humidity
+        //       }%</span>
+        //       <span class="text-small float-left">Pressure :${
+        //         data.main.pressure
+        //       }hPa</span>
+        //       <span class="text-small float-left">Wind Speed :${
+        //         data.wind.speed
+        //       } m/s</span>
+        //       <span class="text-small float-left">Visibility :${
+        //         data.main.visibility
+        //       } m/s</span>
+        //       </div>
+        // </div>
+        // </div>`
+
+        // widget version
+
+        document.getElementById("weather").innerHTML = `<br>
+      <div class="card-subtitle">
+      	<h3>${data.name}</h3>
+      </div>
+
+      <div class="card-body" >
+      	<div class="columns col-12">
+      		<div class="column">
+      			<h3>${Math.round(data.main.temp)}
+      				<sup>°C</sup>
+      				<br>
+      				<h5 class="text-gray text-uppercase">${data.weather[0].main}</h5>
+      			</h3>
+
+      			<span class="text-small float-left">Feels like ${Math.round(
+              data.main.feels_like
+            )}<sup>°C</sup></span>
+
+      			<br>
+      			<div class="divider"></div><span class="text-error text-small float-left">Max ${
+              data.main.temp_max
+            }<sup>°C</sup></span>
+      			<br><span class="text-success text-small float-left">Min ${
+              data.main.temp_min
+            }<sup>°C</sup></span>
+      			</div>
+      		<div class="column">
+      		<img style="height: 80px;" src="./resources/img/weather/${
+            data.weather[0].icon
+          }.svg" alt="Icon" class="img-responsive">
+      		<span class="text-small float-left">Humidity ${data.main.humidity}%</span>
+      		<span class="text-small float-left">Pressure ${
+            data.main.pressure
+          }hPa</span>
+      		<span class="text-small float-left">Wind Speed ${
+            data.wind.speed
+          } m/s</span>
+      		<span class="text-small float-left">Visibility ${
+            data.main.visibility
+          } m/s</span>
+      		</div>
+      	</div>
+      	</div>
+      	<div class="card-footer">
+      		</div>
+      </div>`
+    })
+}
+async function getWeather(apiKey) {
+  await weatherAPI(apiKey)
+}
+
+/*
+Widgets Computer Info function
+*/
+
+// Get current device local ip
 getip = () => {
   const interfaces = os.networkInterfaces()
   const addresses = []
@@ -16,20 +195,20 @@ getip = () => {
   return (document.getElementById("ip").innerHTML = addresses)
 }
 
-// var pjson = require('.../package.json')
-// console.log(pjson.version)
-
+// Get current device host address
 gethost = () => {
   const os = require("os")
   const output = os.hostname()
   return (document.getElementById("host").innerHTML = output)
 }
 
+// Get current device Operting System
 getos = () => {
   const os = require("os")
   const output = os.version()
   return (document.getElementById("osinfo").innerHTML = output)
 }
+// Get current device Operting Architucher
 getarch = () => {
   const os = require("os")
   // const output = os.arch()
@@ -42,67 +221,16 @@ getarch = () => {
   }
   return (document.getElementById("arch").innerHTML = output)
 }
-
+// Get current user
 getuser = () => {
   const os = require("os")
   const output = os.userInfo().username
   return (document.getElementById("user").innerHTML = output)
 }
-getDate = () => {
-  let date_ob = new Date()
-  const days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ]
-  const months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ]
 
-  let date = date_ob.getDate()
-  let month = date_ob.getMonth() + 1
-  let year = date_ob.getFullYear()
-  const output =
-    days[date_ob.getDay()] +
-    " " +
-    months[date_ob.getDay()] +
-    " " +
-    date +
-    ", " +
-    year
-  return (document.getElementById("dt").innerHTML = output)
-}
-
-// this function responsible for live clock
-time = () => {
-  const d = new Date()
-  const s = d.getSeconds()
-  const m = d.getMinutes()
-  const h = (d.getHours() + 24) % 12 || 12
-
-  output =
-    ("0" + h).substr(-2) +
-    ":" +
-    ("0" + m).substr(-2) +
-    ":" +
-    ("0" + s).substr(-2)
-  return (document.getElementById("tm").innerHTML = output)
-}
+/*
+Widgets Age Calculator function
+*/
 
 findage = () => {
   const from = new Date(document.getElementById("fromdate").value)
@@ -122,7 +250,10 @@ findage = () => {
   }
 }
 
-// emiCalculator
+/*
+Widgets EMI Calculator function
+*/
+
 Calculate = () => {
   // Extracting value in the amount
   // section in the constiable
@@ -140,7 +271,9 @@ Calculate = () => {
   document.querySelector("#total").innerHTML = "EMI: " + total + " Taka"
 }
 
-// drop
+/*
+Widgets Dropdown function
+*/
 document.addEventListener("click", (e) => {
   const isDropdownButton = e.target.matches("[data-dropdown-button]")
   if (!isDropdownButton && e.target.closest("[data-dropdown]") != null) return
@@ -150,104 +283,11 @@ document.addEventListener("click", (e) => {
     currentDropdown = e.target.closest("[data-dropdown]")
     currentDropdown.classList.toggle("active")
   }
-
   document.querySelectorAll("[data-dropdown].active").forEach((dropdown) => {
     if (dropdown === currentDropdown) return
     dropdown.classList.remove("active")
   })
 })
-
-/*SUBSCRIBE HERE FOR API KEY: https://home.openweathermap.org/users/sign_up*/
-// const apiKey = '4d8fb5b93d4af21d66a2948710284366'
-const apiKey = "ba700996c9b5d5f5e8e44cf64fcc8992"
-
-// const weatherAPI = (apiKey,lat,lon) => {
-
-const weatherAPI = async (apiKey) => {
-  //ajax here
-  const geo = geoip.lookup(await publicIp.v4())
-
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${geo.city}&appid=${apiKey}&units=metric`
-  // const url = `api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`
-
-  fetch(url)
-    .then((response) => response.json())
-    .then((data) => {
-      // console.log(data)
-      document.getElementById("weather").innerHTML = `<br>
-			<div class="card-subtitle">
-				<h3>${data.name}</h3>
-				<sup>${data.sys.country}</sup>
-			</div>
-
-			<div class="card-body" >
-				<div class="columns col-12">
-					<div class="column">
-						<h3>${Math.round(data.main.temp)}
-							<sup>°C</sup>
-							<br>
-							<h5 class="text-gray text-uppercase">${data.weather[0].main}</h5>
-						</h3>
-						
-						<span class="text-small float-left">Feels like ${Math.round(
-              data.main.feels_like
-            )}<sup>°C</sup></span>
-				
-						<br>
-						<div class="divider"></div><span class="text-error text-small float-left">Max ${
-              data.main.temp_max
-            }<sup>°C</sup></span>
-						<br><span class="text-success text-small float-left">Min ${
-              data.main.temp_min
-            }<sup>°C</sup></span>
-						</div>
-					<div class="column">
-					<img src="./resources/img/weather/${
-            data.weather[0].icon
-          }.svg" alt="Icon" class="img-responsive">
-					
-					<span class="text-small float-left">Humidity ${data.main.humidity}%</span>
-					<span class="text-small float-left">Pressure ${data.main.pressure}hPa</span>
-					<span class="text-small float-left">Wind Speed ${data.wind.speed} m/s</span>	
-					<span class="text-small float-left">Visibility ${
-            data.main.visibility
-          } m/s</span>				
-						
-					</div>
-				</div>
-				</div>
-				<div class="card-footer">
-					</div>
-			</div>`
-    })
-}
-
-{
-  /* <div class="card-image">
-<img src="${data.icon}" alt="${data.weather[0]['description']}" class="img-responsive">
-</div> */
-}
-
-// const getip = async () => {
-// 	geoip.lookup(await publicIp.v4()).then((data) => data.value);
-
-// }
-
-// const publicip = async () => {
-// 	console.log(await publicIp.v4());
-// 	let x = (await publicIp.v4())
-// 	return x
-// }
-// const ip = publicip()
-// console.log(ip);
-// const geo = geoip.lookup(ip);
-
-async function getWeather(apiKey) {
-  // console.log(showPosition())
-  // console.log(getCurrentPosition())
-  // await weatherAPI(apiKey,lat,lon)
-  await weatherAPI(apiKey)
-}
 
 getWeather(apiKey)
 setInterval(time, 1000)
@@ -257,3 +297,5 @@ getip()
 gethost()
 getos()
 getarch()
+
+// Standard Bank Ltd.

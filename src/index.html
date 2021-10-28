@@ -5,26 +5,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Dashboard</title>
-    <link rel="stylesheet" href="./style/spectre-exp.min.css">
-    <link rel="stylesheet" href="./style/spectre-icons.min.css">
-    <link rel="stylesheet" href="./style/spectre.min.css">
+    <link rel="stylesheet" href="./style/edashboard-min-exp.css">
+    <link rel="stylesheet" href="./style/edashboard-min-icons.css">
+    <link rel="stylesheet" href="./style/edashboard-min.css">
     <link rel="stylesheet" href="./style/styles.css">
 
-
-
-
+    <!-- ****************************************************
+    * Module: index.html
+    * Type: HTML5
+    * Author: Tanbin Hassan Bappi
+    * Date: Oct 2021
+    * Description: This is the starting point.
+    ***************************************************** -->
   </head>
 
   <body>
     <div id="container" class="container">
+
+
       <div class="container">
         <header class="navbar container bg-frost">
-
           <section class="navbar-section">
             <div class="dropdown">
-              <a href="#" class="btn btn-link dropdown-toggle" tabindex="0">
+              <a class="btn btn-link dropdown-toggle" tabindex="0">
                 <i class="icon icon-menu"></i>
               </a>
               <ul class="menu">
@@ -56,15 +60,12 @@
                     <label class="label label-primary">0</label>
                   </div>
                 </li>
-
                 <li class="menu-item">
                   <a href="./pages/about.html">About</a>
                   <div class="menu-badge">
-
                   </div>
                 </li>
               </ul>
-
               <div class="dropdown">
                 <a class="btn btn-link dropdown-toggle" tabindex="0">
                   Quick Links <i class="icon icon-caret"></i>
@@ -75,10 +76,7 @@
               </div>
               <a class="btn btn-link" href="https://mail.standardbankbd.com/owa" target="blank">
                 <i class="icon icon-mail"></i> Webmail </a>
-
-
             </div>
-
           </section>
 
           <section class="navbar-center">
@@ -95,7 +93,7 @@
 
             <!-- Notice -->
             <div class="massageMenu" data-dropdown>
-              <a class="link btn btn-lg btn-link " data-dropdown-button onclick="openMsgNav()">
+              <a class="link btn btn-lg btn-link disabled" data-dropdown-button onclick="openMsgNav()">
                 <span class="badge mr-2" id="chatCount" style="pointer-events: none;">
                   <i class="icon icon-message"></i>
                   Chat</a>
@@ -218,53 +216,76 @@
 
 
       <!-- contant body -->
-      <div class="container" style="padding-top:50px; height: max-content;">
+      <div class="container bg-none" style="padding-top:50px; height: max-content;">
         <!-- body -->
         <div class="columns">
           <div class="column col-8 bg-frost box-shadow">
-            <div class="hero">
-              <div class="hero-body">
-                <h1
-                  style="font-family:'Courier New', Courier, monospace; display: flex; justify-content: left; align-items: center;">
-                  <img src="./resources/img/icons/logo.svg" style="height: 100px;"> <span
-                    class="text-primary">Dashboard</span>
-                </h1>
+            <div class="hero-sm">
+              <div class="hero-body container">
+                <div class="columns">
+                  <div class="column">
+                    <h1
+                      style="font-family:'Courier New', Courier, monospace; display: flex; justify-content: left; align-items: center;">
+                      <img src="./resources/img/icons/logo.svg" style="height: 100px;"> <span
+                        class="text-primary">Dashboard</span>
+                    </h1>
+                  </div>
+                  <div class="column">
+                    <!-- <div id="weather"></div> -->
+                  </div>
+                </div>
+
+
+
+
+
+
               </div>
             </div>
+            <!-- contanc body -->
             <div class="container" id="mainBody">
 
+              <!-- loading icon -->
               <progress class="progress" max="100" id="loading"></progress>
-              <br>
+
+              <!-- all buttons -->
+
+
               <h6 class="text-primary p-2 " id="rowOneTitel"></h6>
               <div class="btn-group btn-group-block m-1" id="rowOne">
               </div>
-              <br>
+
               <h6 class="text-primary p-2" id="rowTwoTitel"></h6>
               <div class="btn-group btn-group-block m-1" id="rowTwo">
               </div>
-              <br>
+
               <h6 class="text-primary p-2" id="rowThreeTitel"></h6>
               <div class="btn-group btn-group-block m-1" id="rowThree">
               </div>
-              <br>
+
               <h6 class="text-primary p-2 " id="rowFourTitel"></h6>
               <div class="btn-group btn-group-block m-1" id="rowFour">
               </div>
-              <br>
+
               <h6 class="text-primary p-2 " id="rowFiveTitel"></h6>
               <div class="btn-group btn-group-block m-1" id="rowFive">
               </div>
-              <br>
+
               <h6 class="text-primary p-2 " id="rowSixTitel"></h6>
               <div class="btn-group btn-group-block m-1" id="rowSix">
               </div>
-              <br>
+
             </div>
+
           </div>
+
+
+
+          <!-- widgets -->
           <div class="column col-4" id="widgets">
             <!-- time -->
             <!-- <div class="container"> -->
-            <div class="card box-shadow my-1 mx-0 col-12 container">
+            <div class="card box-shadow my-1 mx-0 col-12 container p-sticky">
               <div class="card-header  text-left">
                 <h1 id="tm" class="text-primary"></h1>
                 <span id="dt" class="text-dark"></span>
@@ -282,7 +303,7 @@
               <div class="card-body">
                 <table>
                   <tr>
-                    <td>IP </td>
+                    <td>IP address</td>
                     <td>: </td>
                     <td><span id="ip">
                       </span></td>
@@ -311,13 +332,6 @@
               </div>
             </div>
 
-            <!-- weather widgets -->
-            <!-- <div class="card box-shadow my-1 mx-0 col-12 container">
-              <div class="card-header">
-                <div class="card-title h5 text-primary text-small">Weather</div>
-              
-              </div>
-            </div> -->
             <!-- rate widgets -->
             <div class="card box-shadow my-1 mx-0 col-12 container">
               <div class="card-header">
@@ -332,11 +346,11 @@
                       </tr>
                     </thead>
                     <tbody id="rate">
-                      <!-- <tr class="active">
-                          <td>Us Dollar</td>
-                          <td class="">84.7000BDT</td>
-                          <td class="">85.7000 BDT</td>
-                        </tr> -->
+                      <tr class="active">
+                        <td>Us Dollar</td>
+                        <td class="">84.7000BDT</td>
+                        <td class="">85.7000 BDT</td>
+                      </tr>
                     </tbody>
                   </table>
                 </div>
