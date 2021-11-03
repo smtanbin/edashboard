@@ -10,20 +10,18 @@
 Variable Declaration
 */
 const stg = window.localStorage
-let host = localStorage.getItem("host")
+let host = localStorage.getItem("syshost")
 
 // get value from local storage
 const scriptLink = () => {
-  if (host === null) {
-    const setting = require("../init.json")
-    stg.setItem("host", setting.host)
-  } else getScript(host)
+ getScript(host)
 }
 // inject scripts
 getScript = (src) => {
-  document.write(`<script src=${src}/src/app/sampledata.js ></script>`)
-  document.write(`<script src=${src}/src/app/remoteApp.js ></script>`)
-  document.write(`<script src=${src}/src/app/function.js ></script>`)
+  document.write(`<script src=${src}/public/allfunc.js></script>`)
+  document.write(`<script src=${src}/public/btnfunc.js></script>`)
+  document.write(`<script src=${src}/public/function.js></script>`)
+  document.write(`<script src=${src}/public/data.js></script>`)
 }
 
 scriptLink()

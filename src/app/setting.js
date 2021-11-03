@@ -11,7 +11,7 @@ Variable Declaration
 */
 
 const stg = window.localStorage
-let host = localStorage.getItem("host")
+let host = localStorage.getItem("syshost")
 const { ipcRenderer } = require("electron")
 
 /****************************************************/
@@ -19,7 +19,7 @@ const { ipcRenderer } = require("electron")
 /*************************************************** */
 
 // default value
-const dSysHost = "http://10.140.8.127/edash"
+const dSyshost = "http://127.0.0.1"
 const dNotificationHost = "http://10.140.8.127/edash"
 const dNotificationPort = "3000"
 const dWeatherapi = "ba700996c9b5d5f5e8e44cf64fcc8992"
@@ -34,16 +34,17 @@ let notificationPort = localStorage.getItem("notificationPort")
 
 // factory reset will reset everything
 const factoryReset = () => {
-  stg.setItem("sysHost", dSysHost)
+  stg.setItem("syshost", dSyshost)
   stg.setItem("notificationHost", dNotificationHost)
   stg.setItem("notificationPort", dNotificationPort)
   stg.setItem("weatherapi", dWeatherapi)
   alert(`Reset Sucessful`)
+  console.log(localStorage)
 }
 
 // only reset host
 const resetSysHost = () => {
-  stg.setItem("sysHost", dSysHost)
+  stg.setItem("syshost", dSyshost)
   alert(`Server change to default Please restart app`)
 }
 // reset weather
@@ -66,7 +67,7 @@ const resetNotificationHost = () => {
 // get host
 getSysHost = () => {
   if (host === null) {
-    stg.setItem("sysHost", dSysHost)
+    stg.setItem("syshost", dSyshost)
     document.getElementById("sysHost").innerHTML = `${host}`
   } else {
     document.getElementById("sysHost").innerHTML = `${host}`
