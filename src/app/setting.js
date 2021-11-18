@@ -19,7 +19,7 @@ const { ipcRenderer } = require('electron')
 /*************************************************** */
 
 // default value
-const dSyshost = 'http://127.0.0.1:3001'
+const dsyshost = 'http://127.0.0.1:3010'
 const dNotificationHost = 'http://127.0.0.1'
 const dNotificationPort = '3001'
 const dWeatherapi = 'ba700996c9b5d5f5e8e44cf64fcc8992'
@@ -34,7 +34,7 @@ let notificationPort = localStorage.getItem('notificationPort')
 
 // factory reset will reset everything
 const factoryReset = () => {
-	stg.setItem('syshost', dSyshost)
+	stg.setItem('syshost', dsyshost)
 	stg.setItem('notificationHost', dNotificationHost)
 	stg.setItem('notificationPort', dNotificationPort)
 	stg.setItem('weatherapi', dWeatherapi)
@@ -43,8 +43,8 @@ const factoryReset = () => {
 }
 
 // only reset host
-const resetSysHost = () => {
-	stg.setItem('syshost', dSyshost)
+const resetsyshost = () => {
+	stg.setItem('syshost', dsyshost)
 	alert(`Server change to default Please restart app`)
 }
 // reset weather
@@ -65,12 +65,12 @@ const resetNotificationHost = () => {
 /***************************************************/
 
 // get host
-getSysHost = () => {
+getsyshost = () => {
 	if (host === null) {
-		stg.setItem('syshost', dSyshost)
-		document.getElementById('sysHost').innerHTML = `${host}`
+		stg.setItem('syshost', dsyshost)
+		document.getElementById('syshost').innerHTML = `${host}`
 	} else {
-		document.getElementById('sysHost').innerHTML = `${host}`
+		document.getElementById('syshost').innerHTML = `${host}`
 	}
 }
 
@@ -104,11 +104,11 @@ ipcRenderer.on('message', function(event, text) {
 /***************************************************/
 
 // set host
-const setSysHost = () => {
+const setsyshost = () => {
 	hostvalue = document.getElementById('ipaddress').value
 	if (!hostvalue) alert('Please input host url')
 	else {
-		stg.setItem('sysHost', hostvalue)
+		stg.setItem('syshost', hostvalue)
 
 		alert(`Server change to ${hostvalue} Please restart app`)
 	}
@@ -142,7 +142,7 @@ const setWeatherKey = () => {
 //                 Calling Functions 				   		//
 /***************************************************/
 
-getSysHost()
+getsyshost()
 getNotificationHost()
 
 //Standard Bank Ltd.
